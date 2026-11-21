@@ -338,12 +338,12 @@ def local_mapping_store(
         encode, decode = codec
     return dol.wrap_kvs(
         files,
-        id_of_key=_safe_id,
-        key_of_id=_surrogate_of_id,
-        data_of_obj=lambda obj: encode(
+        key_encoder=_safe_id,
+        key_decoder=_surrogate_of_id,
+        value_encoder=lambda obj: encode(
             json.dumps(obj, ensure_ascii=False).encode("utf-8")
         ),
-        obj_of_data=lambda data: json.loads(decode(data).decode("utf-8")),
+        value_decoder=lambda data: json.loads(decode(data).decode("utf-8")),
     )
 
 
