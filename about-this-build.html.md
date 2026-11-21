@@ -2,29 +2,29 @@
 
 # About this build
 
-This documentation was built on **2026-11-08 07:52 UTC** from commit <a href="https://github.com/thorwhalen/nyms/commit/662a40aab35829359d43c04ee904c4deacb80406"><code>662a40a</code></a> on branch <code>main</code>, for **nyms 0.0.1** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-21 15:50 UTC** from commit <a href="https://github.com/addaix/nyms/commit/e2aef8a3584296c29c6708099376b2f851e7dbf5"><code>e2aef8a</code></a> on branch <code>main</code>, for **nyms 0.0.2** (from <code>pyproject.toml</code>).
 
 #### NOTE
 Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
-|                     |                                                                                                                                                        |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/thorwhalen/nyms/commit/662a40aab35829359d43c04ee904c4deacb80406"><code>662a40aab35829359d43c04ee904c4deacb80406</code></a> |
-| Branch              | <code>main</code>                                                                                                                                      |
-| Tags at this commit | none                                                                                                                                                   |
-| Working tree        | clean                                                                                                                                                  |
-| Remote              | <code>https://github.com/thorwhalen/nyms</code>                                                                                                        |
+|                     |                                                                                                                                                    |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Commit              | <a href="https://github.com/addaix/nyms/commit/e2aef8a3584296c29c6708099376b2f851e7dbf5"><code>e2aef8a3584296c29c6708099376b2f851e7dbf5</code></a> |
+| Branch              | <code>main</code>                                                                                                                                  |
+| Tags at this commit | none                                                                                                                                               |
+| Working tree        | clean                                                                                                                                              |
+| Remote              | <code>https://github.com/addaix/nyms</code>                                                                                                        |
 
 ## Continuous integration
 
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
-| Repository   | <code>thorwhalen/nyms</code>                                                               |
-| Run          | <a href="https://github.com/thorwhalen/nyms/actions/runs/42460442417">42460442417</a>      |
+| Repository   | <code>addaix/nyms</code>                                                                   |
+| Run          | <a href="https://github.com/addaix/nyms/actions/runs/44921237801">44921237801</a>          |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>662a40aab35829359d43c04ee904c4deacb80406</code> (in the history of the built commit) |
+| Event commit | <code>e2aef8a3584296c29c6708099376b2f851e7dbf5</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -49,13 +49,13 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 ## Package on PyPI
 
-<code>nyms</code> is not on PyPI.
+Latest release: <a href="https://pypi.org/project/nyms/0.0.2/">0.0.2</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
-git clone https://github.com/thorwhalen/nyms && cd nyms
-git checkout 662a40aab35829359d43c04ee904c4deacb80406
+git clone https://github.com/addaix/nyms && cd nyms
+git checkout e2aef8a3584296c29c6708099376b2f851e7dbf5
 pip install "epythet==0.2.22"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

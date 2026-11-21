@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/documentation_options.js?v=e3a6060d"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -411,7 +411,7 @@ window.runMermaid = runMermaid;</script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1" />
+  <meta name="docsearch:version" content="0.0.2" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -551,7 +551,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -648,7 +648,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -730,16 +730,28 @@ window.runMermaid = runMermaid;</script>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">nyms.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pseudonymiser</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">nyms.policy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Policy</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">nyms.surrogates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Aliases</span><span class="p">,</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">KeyedWords</span><span class="p">,</span> <span class="n">RandomWords</span><span class="p">,</span> <span class="n">readable</span> <span class="k">as</span> <span class="n">_readable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nyms.surrogates</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Aliases</span><span class="p">,</span>
+    <span class="n">Counter</span><span class="p">,</span>
+    <span class="n">KeyedWords</span><span class="p">,</span>
+    <span class="n">RandomWords</span><span class="p">,</span>
+    <span class="n">readable</span> <span class="k">as</span> <span class="n">_readable</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">POLICIES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"default"</span><span class="p">:</span> <span class="n">Policy</span><span class="o">.</span><span class="n">default</span><span class="p">,</span> <span class="s2">"identifiers"</span><span class="p">:</span> <span class="n">Policy</span><span class="o">.</span><span class="n">identifiers</span><span class="p">,</span> <span class="s2">"strict"</span><span class="p">:</span> <span class="n">Policy</span><span class="o">.</span><span class="n">strict</span><span class="p">}</span>
+<span class="n">POLICIES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"default"</span><span class="p">:</span> <span class="n">Policy</span><span class="o">.</span><span class="n">default</span><span class="p">,</span>
+    <span class="s2">"identifiers"</span><span class="p">:</span> <span class="n">Policy</span><span class="o">.</span><span class="n">identifiers</span><span class="p">,</span>
+    <span class="s2">"strict"</span><span class="p">:</span> <span class="n">Policy</span><span class="o">.</span><span class="n">strict</span><span class="p">,</span>
+<span class="p">}</span>
 <span class="n">STRATEGIES</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"counter"</span><span class="p">,</span> <span class="s2">"keyed-words"</span><span class="p">,</span> <span class="s2">"random-words"</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_read</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Exactly one of *text* (the content itself) or *path* (a file, or ``-`` for stdin)."""</span>
     <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"give either text or --path (a file, or - for stdin), not both"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">"give either text or --path (a file, or - for stdin), not both"</span>
+        <span class="p">)</span>
     <span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="s2">"-"</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
@@ -751,14 +763,24 @@ window.runMermaid = runMermaid;</script>
     <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="k">if</span> <span class="n">csv</span> <span class="k">else</span> <span class="p">[]</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_pseudonymiser</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"counter"</span><span class="p">,</span> <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">aliases</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pseudonymiser</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_pseudonymiser</span><span class="p">(</span>
+    <span class="n">project</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span>
+    <span class="n">names</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"counter"</span><span class="p">,</span>
+    <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">aliases</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pseudonymiser</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">policy</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">POLICIES</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"unknown policy </span><span class="si">{</span><span class="n">policy</span><span class="si">!r}</span><span class="s2">; one of </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">POLICIES</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">pol</span> <span class="o">=</span> <span class="n">POLICIES</span><span class="p">[</span><span class="n">policy</span><span class="p">]()</span>
     <span class="n">name_list</span> <span class="o">=</span> <span class="n">_split</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">name_list</span><span class="p">:</span>
         <span class="n">pol</span> <span class="o">=</span> <span class="n">pol</span><span class="o">.</span><span class="n">with_names</span><span class="p">(</span><span class="o">*</span><span class="n">name_list</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">Pseudonymiser</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="n">pol</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">name_list</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="n">encrypt</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="n">Counter</span><span class="p">())</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Pseudonymiser</span><span class="p">(</span>
+        <span class="n">project</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="n">pol</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">name_list</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="n">encrypt</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="n">Counter</span><span class="p">()</span>
+    <span class="p">)</span>
     <span class="n">strat</span> <span class="o">=</span> <span class="n">_strategy</span><span class="p">(</span><span class="n">strategy</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>  <span class="c1"># resolves the key only for keyed-words</span>
     <span class="n">alias_pairs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"="</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">_split</span><span class="p">(</span><span class="n">aliases</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"="</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
     <span class="n">p</span><span class="o">.</span><span class="n">mapping</span><span class="o">.</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">Aliases</span><span class="p">(</span><span class="n">alias_pairs</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="n">strat</span><span class="p">)</span> <span class="k">if</span> <span class="n">alias_pairs</span> <span class="k">else</span> <span class="n">strat</span>
@@ -784,14 +806,32 @@ window.runMermaid = runMermaid;</script>
 
 <div class="viewcode-block" id="pseudonymise">
 <a class="viewcode-back" href="../../_autosummary/nyms.tools.html#nyms.tools.pseudonymise">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">pseudonymise</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="n">out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"counter"</span><span class="p">,</span> <span class="n">aliases</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pseudonymise</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span>
+    <span class="n">out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span>
+    <span class="n">names</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"counter"</span><span class="p">,</span>
+    <span class="n">aliases</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Replace detected identifiers in the text (or the file at *path*) with surrogates; the project's mapping remembers them.</span>
 
 <span class="sd">    *names*: comma-separated names you already know (the parties). *aliases*: ``Name=Alias,...``</span>
 <span class="sd">    surrogates you choose yourself. *strategy*: ``counter`` (``[PERSON_1]``), ``keyed-words``</span>
 <span class="sd">    or ``random-words``. The result carries the text (or the ``out`` path) and the run report.</span>
 <span class="sd">    """</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">_pseudonymiser</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="n">policy</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="n">strategy</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="n">encrypt</span><span class="p">,</span> <span class="n">aliases</span><span class="o">=</span><span class="n">aliases</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">_pseudonymiser</span><span class="p">(</span>
+        <span class="n">project</span><span class="p">,</span>
+        <span class="n">policy</span><span class="o">=</span><span class="n">policy</span><span class="p">,</span>
+        <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
+        <span class="n">strategy</span><span class="o">=</span><span class="n">strategy</span><span class="p">,</span>
+        <span class="n">encrypt</span><span class="o">=</span><span class="n">encrypt</span><span class="p">,</span>
+        <span class="n">aliases</span><span class="o">=</span><span class="n">aliases</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">pseudonymise</span><span class="p">(</span><span class="n">_read</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">path</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="n">_emit</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">out</span><span class="p">),</span> <span class="s2">"report"</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">report</span><span class="p">}</span></div>
 
@@ -799,7 +839,14 @@ window.runMermaid = runMermaid;</script>
 
 <div class="viewcode-block" id="reidentify">
 <a class="viewcode-back" href="../../_autosummary/nyms.tools.html#nyms.tools.reidentify">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">reidentify</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="n">out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reidentify</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span>
+    <span class="n">out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Put the originals back into the text (an AI's answer, say). Lists tokens it could not place."""</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Pseudonymiser</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="n">encrypt</span><span class="p">)</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">reidentify</span><span class="p">(</span><span class="n">_read</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">path</span><span class="p">))</span>
@@ -809,17 +856,24 @@ window.runMermaid = runMermaid;</script>
 
 <div class="viewcode-block" id="detect">
 <a class="viewcode-back" href="../../_autosummary/nyms.tools.html#nyms.tools.detect">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">detect</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""The spans the deterministic pass finds, with the policy's decision for each. Nothing is stored."""</span>
     <span class="n">pol</span> <span class="o">=</span> <span class="n">POLICIES</span><span class="p">[</span><span class="n">policy</span><span class="p">]()</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Pseudonymiser</span><span class="p">(</span><span class="s2">"detect-only"</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="p">{},</span> <span class="n">policy</span><span class="o">=</span><span class="n">pol</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">_split</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
-    <span class="k">return</span> <span class="p">[{</span><span class="o">**</span><span class="n">s</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"replace"</span> <span class="k">if</span> <span class="n">pol</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"keep"</span><span class="p">}</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">_read</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">path</span><span class="p">))]</span></div>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">{</span><span class="o">**</span><span class="n">s</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"replace"</span> <span class="k">if</span> <span class="n">pol</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"keep"</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">_read</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">path</span><span class="p">))</span>
+    <span class="p">]</span></div>
 
 
 
 <div class="viewcode-block" id="check">
 <a class="viewcode-back" href="../../_autosummary/nyms.tools.html#nyms.tools.check">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Originals of *project* that occur in the text: what would leak if this text were sent."""</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Pseudonymiser</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="n">encrypt</span><span class="p">)</span>
     <span class="n">leaks</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">_read</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">path</span><span class="p">))</span>
@@ -838,11 +892,19 @@ window.runMermaid = runMermaid;</script>
 
 <div class="viewcode-block" id="readable">
 <a class="viewcode-back" href="../../_autosummary/nyms.tools.html#nyms.tools.readable">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">readable</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"VALUE"</span><span class="p">,</span> <span class="n">n_words</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">readable</span><span class="p">(</span>
+    <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span>
+    <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"VALUE"</span><span class="p">,</span>
+    <span class="n">n_words</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""A keyed hash of *value* under the project's key, rendered as readable words."""</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">nyms.keys</span><span class="w"> </span><span class="kn">import</span> <span class="n">resolve_key</span>
 
-    <span class="k">return</span> <span class="n">_readable</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">resolve_key</span><span class="p">(</span><span class="n">project</span><span class="p">),</span> <span class="n">entity_type</span><span class="o">=</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">n_words</span><span class="o">=</span><span class="n">n_words</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_readable</span><span class="p">(</span>
+        <span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">resolve_key</span><span class="p">(</span><span class="n">project</span><span class="p">),</span> <span class="n">entity_type</span><span class="o">=</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">n_words</span><span class="o">=</span><span class="n">n_words</span>
+    <span class="p">)</span></div>
 
 
 
@@ -850,7 +912,10 @@ window.runMermaid = runMermaid;</script>
 <a class="viewcode-back" href="../../_autosummary/nyms.tools.html#nyms.tools.policies">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">policies</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""The policy presets and the entity types each replaces."""</span>
-    <span class="k">return</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">make</span><span class="p">()</span><span class="o">.</span><span class="n">include</span> <span class="ow">or</span> <span class="p">[])</span> <span class="ow">or</span> <span class="s2">"all detected"</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">make</span> <span class="ow">in</span> <span class="n">POLICIES</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span></div>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">make</span><span class="p">()</span><span class="o">.</span><span class="n">include</span> <span class="ow">or</span> <span class="p">[])</span> <span class="ow">or</span> <span class="s2">"all detected"</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">make</span> <span class="ow">in</span> <span class="n">POLICIES</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="p">}</span></div>
 
 
 

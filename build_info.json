@@ -1,32 +1,32 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-08T07:52:18Z",
+  "built_at": "2026-11-21T15:50:58Z",
   "package": {
     "name": "nyms",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "display_name": "nyms",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "662a40aab35829359d43c04ee904c4deacb80406",
-    "short_commit": "662a40a",
+    "commit": "e2aef8a3584296c29c6708099376b2f851e7dbf5",
+    "short_commit": "e2aef8a",
     "branch": "main",
     "tags": [],
     "dirty": false,
-    "remote_url": "https://github.com/thorwhalen/nyms",
-    "commit_url": "https://github.com/thorwhalen/nyms/commit/662a40aab35829359d43c04ee904c4deacb80406",
+    "remote_url": "https://github.com/addaix/nyms",
+    "commit_url": "https://github.com/addaix/nyms/commit/e2aef8a3584296c29c6708099376b2f851e7dbf5",
     "error": null
   },
   "ci": {
     "provider": "github",
-    "repository": "thorwhalen/nyms",
-    "sha": "662a40aab35829359d43c04ee904c4deacb80406",
+    "repository": "addaix/nyms",
+    "sha": "e2aef8a3584296c29c6708099376b2f851e7dbf5",
     "sha_in_history": true,
     "ref": "refs/heads/main",
     "ref_name": "main",
-    "run_id": "42460442417",
-    "run_url": "https://github.com/thorwhalen/nyms/actions/runs/42460442417",
+    "run_id": "44921237801",
+    "run_url": "https://github.com/addaix/nyms/actions/runs/44921237801",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -60,11 +60,11 @@
   },
   "pypi": {
     "checked": true,
-    "latest": null,
-    "relation": "unknown",
+    "latest": "0.0.2",
+    "relation": "same",
     "error": null
   },
-  "reproduce": "git clone https://github.com/thorwhalen/nyms && cd nyms\ngit checkout 662a40aab35829359d43c04ee904c4deacb80406\npip install \"epythet==0.2.22\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/addaix/nyms && cd nyms\ngit checkout e2aef8a3584296c29c6708099376b2f851e7dbf5\npip install \"epythet==0.2.22\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
     "aligned": true,

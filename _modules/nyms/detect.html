@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/documentation_options.js?v=e3a6060d"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -411,7 +411,7 @@ window.runMermaid = runMermaid;</script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1" />
+  <meta name="docsearch:version" content="0.0.2" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -551,7 +551,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -648,7 +648,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -773,7 +773,11 @@ window.runMermaid = runMermaid;</script>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">detector_name</span><span class="p">(</span><span class="n">detector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""The name a detector reports under: its ``name`` attribute, else its function name."""</span>
-    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">detector</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">detector</span><span class="p">,</span> <span class="s2">"__name__"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">detector</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="n">detector</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">detector</span><span class="p">,</span> <span class="s2">"__name__"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">detector</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">detector_entity_type</span><span class="p">(</span><span class="n">detector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
@@ -815,16 +819,28 @@ window.runMermaid = runMermaid;</script>
             <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">group</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
                 <span class="k">continue</span>
-            <span class="k">if</span> <span class="n">ctx</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ctx</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span> <span class="o">-</span> <span class="n">CONTEXT_WINDOW</span><span class="p">)</span> <span class="p">:</span> <span class="n">start</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">ctx</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ctx</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+                <span class="n">text</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span> <span class="o">-</span> <span class="n">CONTEXT_WINDOW</span><span class="p">)</span> <span class="p">:</span> <span class="n">start</span><span class="p">]</span>
+            <span class="p">):</span>
                 <span class="n">score</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">score</span> <span class="o">+</span> <span class="n">CONTEXT_BOOST</span><span class="p">)</span>
             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_of</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_of</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
-            <span class="k">yield</span> <span class="n">Span</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span> <span class="nb">round</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+            <span class="k">yield</span> <span class="n">Span</span><span class="p">(</span>
+                <span class="n">start</span><span class="p">,</span>
+                <span class="n">end</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">entity_type</span><span class="p">,</span>
+                <span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span>
+                <span class="nb">round</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">value</span><span class="p">,</span>
+            <span class="p">)</span></div>
 
 
 
 <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">_context_re</span><span class="p">(</span><span class="n">words</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">Pattern</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?i)(?&lt;![\w])(?:"</span> <span class="o">+</span> <span class="s2">"|"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">)</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">")"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">"(?i)(?&lt;![\w])(?:"</span> <span class="o">+</span> <span class="s2">"|"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">)</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">")"</span>
+    <span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">normalise_text</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -836,7 +852,9 @@ window.runMermaid = runMermaid;</script>
     <span class="k">return</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s2">"NFC"</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">detect_raw</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">detectors</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">DetectorLike</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Span</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_raw</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">detectors</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">DetectorLike</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Span</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""Run *detectors* (default: :func:`default_detectors`); every span, overlaps included."""</span>
     <span class="n">detectors</span> <span class="o">=</span> <span class="n">default_detectors</span><span class="p">()</span> <span class="k">if</span> <span class="n">detectors</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">detectors</span>
     <span class="n">found</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Span</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -946,7 +964,9 @@ window.runMermaid = runMermaid;</script>
 <span class="k">def</span><span class="w"> </span><span class="nf">_latin_letters</span><span class="p">(</span><span class="n">category</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Latin letters of one Unicode category (``Lu`` or ``Ll``) from the blocks up to Extended-B."""</span>
     <span class="n">ranges</span> <span class="o">=</span> <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mh">0x41</span><span class="p">,</span> <span class="mh">0x5B</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x61</span><span class="p">,</span> <span class="mh">0x7B</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0xC0</span><span class="p">,</span> <span class="mh">0x250</span><span class="p">))</span>
-    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ranges</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">r</span> <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">==</span> <span class="n">category</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="nb">chr</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ranges</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">r</span> <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">==</span> <span class="n">category</span>
+    <span class="p">)</span>
 
 
 <span class="n">_UC</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">_latin_letters</span><span class="p">(</span><span class="s2">"Lu"</span><span class="p">))</span>
@@ -954,7 +974,9 @@ window.runMermaid = runMermaid;</script>
 
 <span class="c1">#: A capitalised word (``Jensen``, ``Anne-Marie``) or an all-capitals one (``JENSEN``), as in</span>
 <span class="c1">#: headings; a single capital letter is not a word (so ``N`` in ``København N`` is a suffix).</span>
-<span class="n">_CAP_WORD</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">"(?:[</span><span class="si">{</span><span class="n">_UC</span><span class="si">}</span><span class="s2">][</span><span class="si">{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">]+(?:-[</span><span class="si">{</span><span class="n">_UC</span><span class="si">}</span><span class="s2">][</span><span class="si">{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">]+)?|[</span><span class="si">{</span><span class="n">_UC</span><span class="si">}</span><span class="s2">]</span><span class="se">{{</span><span class="s2">2,</span><span class="se">}}</span><span class="s2">(?:-[</span><span class="si">{</span><span class="n">_UC</span><span class="si">}</span><span class="s2">]</span><span class="se">{{</span><span class="s2">2,</span><span class="se">}}</span><span class="s2">)?)"</span>
+<span class="n">_CAP_WORD</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">rf</span><span class="s2">"(?:[</span><span class="si">{</span><span class="n">_UC</span><span class="si">}</span><span class="s2">][</span><span class="si">{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">]+(?:-[</span><span class="si">{</span><span class="n">_UC</span><span class="si">}</span><span class="s2">][</span><span class="si">{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">]+)?|[</span><span class="si">{</span><span class="n">_UC</span><span class="si">}</span><span class="s2">]</span><span class="se">{{</span><span class="s2">2,</span><span class="se">}}</span><span class="s2">(?:-[</span><span class="si">{</span><span class="n">_UC</span><span class="si">}</span><span class="s2">]</span><span class="se">{{</span><span class="s2">2,</span><span class="se">}}</span><span class="s2">)?)"</span>
+<span class="p">)</span>
 <span class="n">_INITIALS</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">"(?:[</span><span class="si">{</span><span class="n">_UC</span><span class="si">}</span><span class="s2">]\.\s?)</span><span class="se">{{</span><span class="s2">1,3</span><span class="se">}}</span><span class="s2">"</span>
 <span class="n">_PARTICLE</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"(?:von|van|de|der|den|af|la|le|du|di|da)"</span>
 <span class="c1"># Each step of a name's tail is a capitalised word or an initial, optionally preceded by a</span>
@@ -990,7 +1012,10 @@ window.runMermaid = runMermaid;</script>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_dk_address_validate</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">Match</span><span class="p">):</span>
     <span class="n">street</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"street"</span><span class="p">)</span>
-    <span class="n">has_suffix</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">_DK_STREET_SUFFIX</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">"$"</span><span class="p">,</span> <span class="n">street</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="n">has_suffix</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">_DK_STREET_SUFFIX</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">"$"</span><span class="p">,</span> <span class="n">street</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+        <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">)</span>
     <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"post"</span><span class="p">):</span>
         <span class="k">return</span> <span class="mf">0.95</span>
     <span class="k">return</span> <span class="mf">0.8</span> <span class="k">if</span> <span class="n">has_suffix</span> <span class="k">else</span> <span class="kc">False</span>
@@ -1032,8 +1057,14 @@ window.runMermaid = runMermaid;</script>
     <span class="p">(</span><span class="s2">"stripe_key"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\b[srp]k_(?:live|test)_[A-Za-z0-9]{16,}\b"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"slack_token"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\bxox[baprs]-[A-Za-z0-9\-]{10,}\b"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"google_api_key"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\bAIza[0-9A-Za-z_\-]</span><span class="si">{35}</span><span class="s2">\b"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"json_web_token"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\beyJ[A-Za-z0-9_\-]{10,}\.eyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]+"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"private_key_block"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?-----END [A-Z ]*PRIVATE KEY-----"</span><span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">"json_web_token"</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">"\beyJ[A-Za-z0-9_\-]{10,}\.eyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]+"</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">"private_key_block"</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">"-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?-----END [A-Z ]*PRIVATE KEY-----"</span><span class="p">,</span>
+    <span class="p">),</span>
     <span class="p">(</span>
         <span class="s2">"secret_assignment"</span><span class="p">,</span>
         <span class="sa">r</span><span class="s2">"(?i)(?&lt;![A-Za-z0-9])(?:[A-Za-z0-9]+[_-])*(?:api[_-]?key|secret[_-]?\w*|passwd|password|access[_-]?token|auth[_-]?token|token|credential\w*)\b\s*[:=]\s*['</span><span class="se">\"</span><span class="s2">]?((?=[^'</span><span class="se">\"</span><span class="s2">\s]*[A-Za-z])(?=[^'</span><span class="se">\"</span><span class="s2">\s]*\d)[A-Za-z0-9+/=_\-.]{16,})['</span><span class="se">\"</span><span class="s2">]?"</span><span class="p">,</span>
@@ -1044,7 +1075,9 @@ window.runMermaid = runMermaid;</script>
     <span class="sa">r</span><span class="s2">"(?:\b(?:Hr|Fru|Frk|Mr|Mrs|Ms|Mx|Dr|Prof|Adv|Sir)\.?|\b(?:advokat|Advokat|direktør|Direktør|sagsøger|Sagsøger|"</span>
     <span class="sa">r</span><span class="s2">"sagsøgte|Sagsøgte|klager|Klager|indklagede|Indklagede|lejer|Lejer|udlejer|Udlejer|vidne|Vidne|dommer|Dommer))"</span>
 <span class="p">)</span>
-<span class="n">_TITLE_NAME</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">"</span><span class="si">{</span><span class="n">_TITLES</span><span class="si">}</span><span class="s2">\s+(?P&lt;name&gt;(?:</span><span class="si">{</span><span class="n">_INITIALS</span><span class="si">}</span><span class="s2">)?</span><span class="si">{</span><span class="n">_CAP_WORD</span><span class="si">}{</span><span class="n">_NAME_TAIL</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+<span class="n">_TITLE_NAME</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="sa">rf</span><span class="s2">"</span><span class="si">{</span><span class="n">_TITLES</span><span class="si">}</span><span class="s2">\s+(?P&lt;name&gt;(?:</span><span class="si">{</span><span class="n">_INITIALS</span><span class="si">}</span><span class="s2">)?</span><span class="si">{</span><span class="n">_CAP_WORD</span><span class="si">}{</span><span class="n">_NAME_TAIL</span><span class="si">}</span><span class="s2">)"</span>
+<span class="p">)</span>
 
 <span class="n">_HEURISTIC_NAME</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
     <span class="sa">rf</span><span class="s2">"(?&lt;![</span><span class="si">{</span><span class="n">_UC</span><span class="si">}{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">\-])(?P&lt;name&gt;(?:</span><span class="si">{</span><span class="n">_INITIALS</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">_CAP_WORD</span><span class="si">}</span><span class="s2">)(?:\s(?:</span><span class="si">{</span><span class="n">_PARTICLE</span><span class="si">}</span><span class="s2">\s)?</span><span class="si">{</span><span class="n">_CAP_WORD</span><span class="si">}</span><span class="s2">)</span><span class="se">{{</span><span class="s2">1,3</span><span class="se">}}</span><span class="s2">)(?![</span><span class="si">{</span><span class="n">_UC</span><span class="si">}{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">])"</span>
@@ -1075,7 +1108,10 @@ window.runMermaid = runMermaid;</script>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_heuristic_name_validate</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">Match</span><span class="p">):</span>
     <span class="n">words</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span> <span class="ow">in</span> <span class="n">NAME_STOPWORDS</span> <span class="ow">or</span> <span class="n">words</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span> <span class="ow">in</span> <span class="n">NAME_STOPWORDS</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span>
+        <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span> <span class="ow">in</span> <span class="n">NAME_STOPWORDS</span>
+        <span class="ow">or</span> <span class="n">words</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span> <span class="ow">in</span> <span class="n">NAME_STOPWORDS</span>
+    <span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span> <span class="ow">in</span> <span class="n">NAME_STOPWORDS</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span>
@@ -1094,7 +1130,11 @@ window.runMermaid = runMermaid;</script>
     <span class="n">languages</span> <span class="o">=</span> <span class="n">languages</span> <span class="ow">or</span> <span class="p">(</span><span class="s2">"da"</span><span class="p">,</span> <span class="s2">"en"</span><span class="p">)</span>
     <span class="n">names</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">languages</span><span class="p">:</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s2">"nyms.data.names"</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">"first_names_</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">.txt"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s2">"nyms.data.names"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">"first_names_</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">.txt"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
+        <span class="p">)</span>
         <span class="n">names</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
     <span class="k">return</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
 
@@ -1130,7 +1170,9 @@ window.runMermaid = runMermaid;</script>
     <span class="c1"># The list is matched case-insensitively (headings are upper case) but the head must start</span>
     <span class="c1"># with a capital: "jan" in "1. jan. 2024" is a month, "Jan" is a name. A genitive "s" after</span>
     <span class="c1"># the name is matched but left outside the span.</span>
-    <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">"(?&lt;![</span><span class="si">{</span><span class="n">_UC</span><span class="si">}{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">])(?P&lt;name&gt;(?i:</span><span class="si">{</span><span class="n">alt</span><span class="si">}</span><span class="s2">)(?:-</span><span class="si">{</span><span class="n">_CAP_WORD</span><span class="si">}</span><span class="s2">)?</span><span class="si">{</span><span class="n">tail</span><span class="si">}</span><span class="s2">)(?:(?:'s|’s|s)(?![</span><span class="si">{</span><span class="n">_UC</span><span class="si">}{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">])|(?![</span><span class="si">{</span><span class="n">_UC</span><span class="si">}{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">]))"</span><span class="p">)</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+        <span class="sa">rf</span><span class="s2">"(?&lt;![</span><span class="si">{</span><span class="n">_UC</span><span class="si">}{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">])(?P&lt;name&gt;(?i:</span><span class="si">{</span><span class="n">alt</span><span class="si">}</span><span class="s2">)(?:-</span><span class="si">{</span><span class="n">_CAP_WORD</span><span class="si">}</span><span class="s2">)?</span><span class="si">{</span><span class="n">tail</span><span class="si">}</span><span class="s2">)(?:(?:'s|’s|s)(?![</span><span class="si">{</span><span class="n">_UC</span><span class="si">}{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">])|(?![</span><span class="si">{</span><span class="n">_UC</span><span class="si">}{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">]))"</span>
+    <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">Match</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)</span>
@@ -1139,49 +1181,147 @@ window.runMermaid = runMermaid;</script>
         <span class="k">return</span> <span class="n">score</span> <span class="k">if</span> <span class="s2">" "</span> <span class="ow">in</span> <span class="n">name</span> <span class="k">else</span> <span class="nb">min</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">single_word_score</span><span class="p">)</span>
 
     <span class="n">value_of</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">value_of_name</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)))</span> <span class="k">if</span> <span class="n">value_of_name</span> <span class="k">else</span> <span class="kc">None</span>
-    <span class="k">return</span> <span class="n">Detector</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">,</span> <span class="n">value_of</span><span class="o">=</span><span class="n">value_of</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">Detector</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">,</span> <span class="n">value_of</span><span class="o">=</span><span class="n">value_of</span>
+    <span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="default_detectors">
 <a class="viewcode-back" href="../../_autosummary/nyms.html#nyms.default_detectors">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">default_detectors</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span> <span class="n">languages</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"da"</span><span class="p">,</span> <span class="s2">"en"</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Detector</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">default_detectors</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span> <span class="n">languages</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"da"</span><span class="p">,</span> <span class="s2">"en"</span><span class="p">)</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Detector</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""The deterministic detector set. *names* are the parties you already know.</span>
 
 <span class="sd">    Order does not matter for the result (overlaps are resolved afterwards), only for the</span>
 <span class="sd">    report's grouping.</span>
 <span class="sd">    """</span>
     <span class="n">detectors</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="s2">"cpr"</span><span class="p">,</span> <span class="s2">"CPR"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?&lt;![\d])\d</span><span class="si">{6}</span><span class="s2">-?\d</span><span class="si">{4}</span><span class="s2">(?![\d])"</span><span class="p">),</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">_cpr_validate</span><span class="p">,</span>
-                 <span class="n">context</span><span class="o">=</span><span class="p">(</span><span class="s2">"cpr"</span><span class="p">,</span> <span class="s2">"cpr-nr"</span><span class="p">,</span> <span class="s2">"cpr-nummer"</span><span class="p">,</span> <span class="s2">"personnummer"</span><span class="p">,</span> <span class="s2">"person nr"</span><span class="p">,</span> <span class="s2">"fødselsnummer"</span><span class="p">)),</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="s2">"cvr"</span><span class="p">,</span> <span class="s2">"CVR"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?&lt;![\w])\d</span><span class="si">{8}</span><span class="s2">(?![\d])"</span><span class="p">),</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">_cvr_validate</span><span class="p">,</span>
-                 <span class="n">context</span><span class="o">=</span><span class="p">(</span><span class="s2">"cvr"</span><span class="p">,</span> <span class="s2">"cvr-nr"</span><span class="p">,</span> <span class="s2">"cvr-nummer"</span><span class="p">,</span> <span class="s2">"se-nr"</span><span class="p">,</span> <span class="s2">"se-nummer"</span><span class="p">,</span> <span class="s2">"vat"</span><span class="p">,</span> <span class="s2">"moms"</span><span class="p">)),</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="s2">"cpr"</span><span class="p">,</span>
+            <span class="s2">"CPR"</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?&lt;![\d])\d</span><span class="si">{6}</span><span class="s2">-?\d</span><span class="si">{4}</span><span class="s2">(?![\d])"</span><span class="p">),</span>
+            <span class="mf">0.9</span><span class="p">,</span>
+            <span class="n">_cpr_validate</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">=</span><span class="p">(</span>
+                <span class="s2">"cpr"</span><span class="p">,</span>
+                <span class="s2">"cpr-nr"</span><span class="p">,</span>
+                <span class="s2">"cpr-nummer"</span><span class="p">,</span>
+                <span class="s2">"personnummer"</span><span class="p">,</span>
+                <span class="s2">"person nr"</span><span class="p">,</span>
+                <span class="s2">"fødselsnummer"</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="s2">"cvr"</span><span class="p">,</span>
+            <span class="s2">"CVR"</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?&lt;![\w])\d</span><span class="si">{8}</span><span class="s2">(?![\d])"</span><span class="p">),</span>
+            <span class="mf">0.4</span><span class="p">,</span>
+            <span class="n">_cvr_validate</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">=</span><span class="p">(</span>
+                <span class="s2">"cvr"</span><span class="p">,</span>
+                <span class="s2">"cvr-nr"</span><span class="p">,</span>
+                <span class="s2">"cvr-nummer"</span><span class="p">,</span>
+                <span class="s2">"se-nr"</span><span class="p">,</span>
+                <span class="s2">"se-nummer"</span><span class="p">,</span>
+                <span class="s2">"vat"</span><span class="p">,</span>
+                <span class="s2">"moms"</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"dk_vat"</span><span class="p">,</span> <span class="s2">"CVR"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\bDK\s?\d</span><span class="si">{8}</span><span class="s2">\b"</span><span class="p">),</span> <span class="mf">0.95</span><span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"email"</span><span class="p">,</span> <span class="s2">"EMAIL"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[\w.+-]+@[\w-]+(?:\.[\w-]+)+"</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">),</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="s2">"dk_phone"</span><span class="p">,</span> <span class="s2">"PHONE"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?&lt;![\d+])(?:\+45[\s.-]?|0045[\s.-]?)?(?:\d</span><span class="si">{2}</span><span class="s2">[\s.-]?)</span><span class="si">{3}</span><span class="s2">\d</span><span class="si">{2}</span><span class="s2">(?![\d])"</span><span class="p">),</span> <span class="mf">0.7</span><span class="p">,</span>
-                 <span class="n">_dk_phone_validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">(</span><span class="s2">"tlf"</span><span class="p">,</span> <span class="s2">"telefon"</span><span class="p">,</span> <span class="s2">"mobil"</span><span class="p">,</span> <span class="s2">"mob"</span><span class="p">,</span> <span class="s2">"phone"</span><span class="p">,</span> <span class="s2">"tel"</span><span class="p">,</span> <span class="s2">"ring"</span><span class="p">)),</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="s2">"intl_phone"</span><span class="p">,</span> <span class="s2">"PHONE"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?&lt;![\d])\+(?!45)\d{1,3}[\s.-]?\(?\d{1,4}\)?(?:[\s.-]?\d{2,4}){2,4}(?![\d])"</span><span class="p">),</span> <span class="mf">0.9</span><span class="p">),</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="s2">"iban"</span><span class="p">,</span> <span class="s2">"IBAN"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\b[A-Z]</span><span class="si">{2}</span><span class="s2">\d</span><span class="si">{2}</span><span class="s2">(?:\s?[A-Z0-9]</span><span class="si">{4}</span><span class="s2">){2,7}(?:\s?[A-Z0-9]{1,4})?\b"</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">_iban_validate</span><span class="p">),</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="s2">"dk_bank_account"</span><span class="p">,</span> <span class="s2">"BANK_ACCOUNT"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?&lt;![\d])\d</span><span class="si">{4}</span><span class="s2">(?:[\s-]|\s?(?i:konto(?:nr|nummer)?\.?)\s?)\d{6,10}(?![\d])"</span><span class="p">),</span> <span class="mf">0.6</span><span class="p">,</span>
-                 <span class="n">context</span><span class="o">=</span><span class="p">(</span><span class="s2">"konto"</span><span class="p">,</span> <span class="s2">"kontonr"</span><span class="p">,</span> <span class="s2">"kontonummer"</span><span class="p">,</span> <span class="s2">"reg"</span><span class="p">,</span> <span class="s2">"reg.nr"</span><span class="p">,</span> <span class="s2">"registreringsnummer"</span><span class="p">,</span> <span class="s2">"account"</span><span class="p">,</span> <span class="s2">"bank"</span><span class="p">)),</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="s2">"dk_phone"</span><span class="p">,</span>
+            <span class="s2">"PHONE"</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+                <span class="sa">r</span><span class="s2">"(?&lt;![\d+])(?:\+45[\s.-]?|0045[\s.-]?)?(?:\d</span><span class="si">{2}</span><span class="s2">[\s.-]?)</span><span class="si">{3}</span><span class="s2">\d</span><span class="si">{2}</span><span class="s2">(?![\d])"</span>
+            <span class="p">),</span>
+            <span class="mf">0.7</span><span class="p">,</span>
+            <span class="n">_dk_phone_validate</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">=</span><span class="p">(</span><span class="s2">"tlf"</span><span class="p">,</span> <span class="s2">"telefon"</span><span class="p">,</span> <span class="s2">"mobil"</span><span class="p">,</span> <span class="s2">"mob"</span><span class="p">,</span> <span class="s2">"phone"</span><span class="p">,</span> <span class="s2">"tel"</span><span class="p">,</span> <span class="s2">"ring"</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="s2">"intl_phone"</span><span class="p">,</span>
+            <span class="s2">"PHONE"</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+                <span class="sa">r</span><span class="s2">"(?&lt;![\d])\+(?!45)\d{1,3}[\s.-]?\(?\d{1,4}\)?(?:[\s.-]?\d{2,4}){2,4}(?![\d])"</span>
+            <span class="p">),</span>
+            <span class="mf">0.9</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="s2">"iban"</span><span class="p">,</span>
+            <span class="s2">"IBAN"</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+                <span class="sa">r</span><span class="s2">"\b[A-Z]</span><span class="si">{2}</span><span class="s2">\d</span><span class="si">{2}</span><span class="s2">(?:\s?[A-Z0-9]</span><span class="si">{4}</span><span class="s2">){2,7}(?:\s?[A-Z0-9]{1,4})?\b"</span>
+            <span class="p">),</span>
+            <span class="mf">1.0</span><span class="p">,</span>
+            <span class="n">_iban_validate</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="s2">"dk_bank_account"</span><span class="p">,</span>
+            <span class="s2">"BANK_ACCOUNT"</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+                <span class="sa">r</span><span class="s2">"(?&lt;![\d])\d</span><span class="si">{4}</span><span class="s2">(?:[\s-]|\s?(?i:konto(?:nr|nummer)?\.?)\s?)\d{6,10}(?![\d])"</span>
+            <span class="p">),</span>
+            <span class="mf">0.6</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">=</span><span class="p">(</span>
+                <span class="s2">"konto"</span><span class="p">,</span>
+                <span class="s2">"kontonr"</span><span class="p">,</span>
+                <span class="s2">"kontonummer"</span><span class="p">,</span>
+                <span class="s2">"reg"</span><span class="p">,</span>
+                <span class="s2">"reg.nr"</span><span class="p">,</span>
+                <span class="s2">"registreringsnummer"</span><span class="p">,</span>
+                <span class="s2">"account"</span><span class="p">,</span>
+                <span class="s2">"bank"</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"dk_address"</span><span class="p">,</span> <span class="s2">"ADDRESS"</span><span class="p">,</span> <span class="n">_DK_ADDRESS</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">_dk_address_validate</span><span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"en_address"</span><span class="p">,</span> <span class="s2">"ADDRESS"</span><span class="p">,</span> <span class="n">_EN_ADDRESS</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="s2">"dk_postcode_city"</span><span class="p">,</span> <span class="s2">"POSTCODE_CITY"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">"(?&lt;![\d])</span><span class="si">{</span><span class="n">_DK_POSTCODE_CITY</span><span class="si">}</span><span class="s2">(?![</span><span class="si">{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">])"</span><span class="p">),</span> <span class="mf">0.6</span><span class="p">),</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="s2">"dk_postcode_city"</span><span class="p">,</span>
+            <span class="s2">"POSTCODE_CITY"</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">"(?&lt;![\d])</span><span class="si">{</span><span class="n">_DK_POSTCODE_CITY</span><span class="si">}</span><span class="s2">(?![</span><span class="si">{</span><span class="n">_LC</span><span class="si">}</span><span class="s2">])"</span><span class="p">),</span>
+            <span class="mf">0.6</span><span class="p">,</span>
+        <span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"amount"</span><span class="p">,</span> <span class="s2">"AMOUNT"</span><span class="p">,</span> <span class="n">_AMOUNT</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="s2">"DATE"</span><span class="p">,</span> <span class="n">_DATE</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"case_id"</span><span class="p">,</span> <span class="s2">"CASE_ID"</span><span class="p">,</span> <span class="n">_CASE_ID_CODE</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"case_id_labelled"</span><span class="p">,</span> <span class="s2">"CASE_ID"</span><span class="p">,</span> <span class="n">_CASE_ID_LABELLED</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">"id"</span><span class="p">),</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="s2">"url"</span><span class="p">,</span> <span class="s2">"URL"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\bhttps?://[^\s&lt;&gt;</span><span class="se">\"</span><span class="s2">')\]]+|\bwww\.[^\s&lt;&gt;</span><span class="se">\"</span><span class="s2">')\]]+"</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">),</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="s2">"url"</span><span class="p">,</span>
+            <span class="s2">"URL"</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\bhttps?://[^\s&lt;&gt;</span><span class="se">\"</span><span class="s2">')\]]+|\bwww\.[^\s&lt;&gt;</span><span class="se">\"</span><span class="s2">')\]]+"</span><span class="p">),</span>
+            <span class="mf">1.0</span><span class="p">,</span>
+        <span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"org_name"</span><span class="p">,</span> <span class="s2">"ORG"</span><span class="p">,</span> <span class="n">_ORG_NAME</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">),</span>
         <span class="n">Detector</span><span class="p">(</span><span class="s2">"title_name"</span><span class="p">,</span> <span class="s2">"PERSON"</span><span class="p">,</span> <span class="n">_TITLE_NAME</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">),</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="s2">"heuristic_name"</span><span class="p">,</span> <span class="s2">"PERSON"</span><span class="p">,</span> <span class="n">_HEURISTIC_NAME</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">_heuristic_name_validate</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">),</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="s2">"heuristic_name"</span><span class="p">,</span>
+            <span class="s2">"PERSON"</span><span class="p">,</span>
+            <span class="n">_HEURISTIC_NAME</span><span class="p">,</span>
+            <span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">_heuristic_name_validate</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">,</span>
+        <span class="p">),</span>
     <span class="p">]</span>
     <span class="n">detectors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
-        <span class="n">Detector</span><span class="p">(</span><span class="sa">f</span><span class="s2">"credential:</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"CREDENTIAL"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="s2">"secret_assignment"</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">Detector</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"credential:</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="s2">"CREDENTIAL"</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">p</span><span class="p">),</span>
+            <span class="mf">1.0</span><span class="p">,</span>
+            <span class="kc">None</span><span class="p">,</span>
+            <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="s2">"secret_assignment"</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
         <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">_CREDENTIAL_PATTERNS</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="n">languages</span><span class="p">:</span>
-        <span class="n">detectors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gazetteer_detector</span><span class="p">(</span><span class="n">bundled_first_names</span><span class="p">(</span><span class="o">*</span><span class="n">languages</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"first_names"</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">0.9</span><span class="p">))</span>
+        <span class="n">detectors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">gazetteer_detector</span><span class="p">(</span>
+                <span class="n">bundled_first_names</span><span class="p">(</span><span class="o">*</span><span class="n">languages</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"first_names"</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">0.9</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
     <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">n</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
     <span class="k">if</span> <span class="n">names</span><span class="p">:</span>
         <span class="n">detectors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gazetteer_detector</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"known_names"</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
@@ -1213,7 +1353,9 @@ window.runMermaid = runMermaid;</script>
 
 <div class="viewcode-block" id="known_values_detectors">
 <a class="viewcode-back" href="../../_autosummary/nyms.html#nyms.known_values_detectors">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">known_values_detectors</span><span class="p">(</span><span class="n">records</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">extra_names</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span> <span class="n">score</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Detector</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">known_values_detectors</span><span class="p">(</span>
+    <span class="n">records</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">extra_names</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span> <span class="n">score</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Detector</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""Detectors for what a project already knows: its values, their name components, its surrogates.</span>
 
 <span class="sd">    - every original in the mapping, by type: names through :func:`gazetteer_detector` (word</span>
@@ -1231,23 +1373,53 @@ window.runMermaid = runMermaid;</script>
     <span class="n">out</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Detector</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">by_type</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
         <span class="k">if</span> <span class="n">entity_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"PERSON"</span><span class="p">,</span> <span class="s2">"ORG"</span><span class="p">):</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gazetteer_detector</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"known_values"</span><span class="p">,</span> <span class="n">entity_type</span><span class="o">=</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="n">score</span><span class="p">,</span> <span class="n">surname_tail</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">gazetteer_detector</span><span class="p">(</span>
+                    <span class="n">values</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">"known_values"</span><span class="p">,</span>
+                    <span class="n">entity_type</span><span class="o">=</span><span class="n">entity_type</span><span class="p">,</span>
+                    <span class="n">score</span><span class="o">=</span><span class="n">score</span><span class="p">,</span>
+                    <span class="n">surname_tail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">alt</span> <span class="o">=</span> <span class="s2">"|"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Detector</span><span class="p">(</span><span class="s2">"known_values"</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">"(?&lt;![\w])(?:</span><span class="si">{</span><span class="n">alt</span><span class="si">}</span><span class="s2">)(?![\w])"</span><span class="p">),</span> <span class="n">score</span><span class="p">))</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">Detector</span><span class="p">(</span>
+                    <span class="s2">"known_values"</span><span class="p">,</span>
+                    <span class="n">entity_type</span><span class="p">,</span>
+                    <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">"(?&lt;![\w])(?:</span><span class="si">{</span><span class="n">alt</span><span class="si">}</span><span class="s2">)(?![\w])"</span><span class="p">),</span>
+                    <span class="n">score</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
     <span class="n">persons</span> <span class="o">=</span> <span class="n">by_type</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"PERSON"</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span> <span class="o">|</span> <span class="p">{</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">extra_names</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">n</span><span class="o">.</span><span class="n">strip</span><span class="p">()}</span>
     <span class="n">components</span> <span class="o">=</span> <span class="n">name_components</span><span class="p">(</span><span class="n">persons</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">components</span><span class="p">:</span>
         <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
             <span class="n">gazetteer_detector</span><span class="p">(</span>
-                <span class="n">components</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"known_components"</span><span class="p">,</span> <span class="n">entity_type</span><span class="o">=</span><span class="s2">"PERSON"</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">surname_tail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">single_word_score</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
-                <span class="n">value_of_name</span><span class="o">=</span><span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?:'s|’s|s)$"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">casefold</span><span class="p">()),</span> <span class="n">components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">casefold</span><span class="p">())),</span>
+                <span class="n">components</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">"known_components"</span><span class="p">,</span>
+                <span class="n">entity_type</span><span class="o">=</span><span class="s2">"PERSON"</span><span class="p">,</span>
+                <span class="n">score</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+                <span class="n">surname_tail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">single_word_score</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+                <span class="n">value_of_name</span><span class="o">=</span><span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                    <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?:'s|’s|s)$"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">casefold</span><span class="p">()),</span>
+                    <span class="n">components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">casefold</span><span class="p">()),</span>
+                <span class="p">),</span>
             <span class="p">)</span>
         <span class="p">)</span>
     <span class="n">surrogates</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">({</span><span class="n">r</span><span class="o">.</span><span class="n">surrogate</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">recs</span><span class="p">},</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">surrogates</span><span class="p">:</span>
         <span class="n">alt</span> <span class="o">=</span> <span class="s2">"|"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">surrogates</span><span class="p">)</span>
-        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Detector</span><span class="p">(</span><span class="s2">"surrogates"</span><span class="p">,</span> <span class="n">SURROGATE_TYPE</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">"(?&lt;![\w])(?:</span><span class="si">{</span><span class="n">alt</span><span class="si">}</span><span class="s2">)(?![\w])"</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">Detector</span><span class="p">(</span>
+                <span class="s2">"surrogates"</span><span class="p">,</span>
+                <span class="n">SURROGATE_TYPE</span><span class="p">,</span>
+                <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">"(?&lt;![\w])(?:</span><span class="si">{</span><span class="n">alt</span><span class="si">}</span><span class="s2">)(?![\w])"</span><span class="p">),</span>
+                <span class="mf">1.0</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span></div>
 
 </pre></div>

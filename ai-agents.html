@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/documentation_options.js?v=e3a6060d"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -57,7 +57,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1" />
+  <meta name="docsearch:version" content="0.0.2" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -197,7 +197,7 @@
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -296,7 +296,7 @@
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -385,18 +385,18 @@ machine-readable copies of this documentation.</p>
 <section id="nyms">
 <h3><code class="docutils literal notranslate"><span class="pre">nyms</span></code><a class="headerlink" href="#nyms" title="Link to this heading">#</a></h3>
 <p>Pseudonymise documents before any of their content reaches an AI model, re-identify the model’s answer, and check that nothing leaks, with the nyms package (Danish and English; CPR, CVR, names, addresses, phone, e-mail, IBAN, amounts, credentials). Use whenever a user wants to send personal, legal, medical or financial documents to an AI, asks to “anonymise”, “redact”, “remove names”, “mask the CPR numbers”, “de-identify”, “pseudonymise”, “protect privacy before sending to ChatGPT/Claude”, or when you are about to paste someone else’s personal data into a prompt. Also use to put the real names back into an answer (“re-identify”, “restore the names”).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gh<span class="w"> </span>skill<span class="w"> </span>install<span class="w"> </span>thorwhalen/nyms<span class="w"> </span>nyms<span class="w"> </span>--agent<span class="w"> </span>claude-code
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gh<span class="w"> </span>skill<span class="w"> </span>install<span class="w"> </span>addaix/nyms<span class="w"> </span>nyms<span class="w"> </span>--agent<span class="w"> </span>claude-code
 </pre></div>
 </div>
-<p>Source: <a class="reference external" href="https://github.com/thorwhalen/nyms/tree/HEAD/nyms/data/skills/nyms"><code class="docutils literal notranslate"><span class="pre">nyms/data/skills/nyms</span></code></a> (bundled with the pip package).</p>
+<p>Source: <a class="reference external" href="https://github.com/addaix/nyms/tree/HEAD/nyms/data/skills/nyms"><code class="docutils literal notranslate"><span class="pre">nyms/data/skills/nyms</span></code></a> (bundled with the pip package).</p>
 </section>
 <section id="nyms-dev-deidentification">
 <h3><code class="docutils literal notranslate"><span class="pre">nyms-dev-deidentification</span></code><a class="headerlink" href="#nyms-dev-deidentification" title="Link to this heading">#</a></h3>
 <p>The expert index for working on de-identification and reversible pseudonymisation in the nyms package, for agents developing or extending it. Routes to the research reports (terminology and regulation, detection libraries and methods, surrogates and key management, pipeline architecture), the five ADRs, the seam table, the test rules (leakage, round trip, consistency) and the vocabulary to use. Use when adding a detector or entity type, a surrogate strategy, a store backend, the model-based second pass, Danish or English fixtures, or when a question about pseudonymisation, PII detection, CPR/CVR validation, keyed hashing, format-preserving encryption, re-identification risk or key management comes up while developing nyms.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gh<span class="w"> </span>skill<span class="w"> </span>install<span class="w"> </span>thorwhalen/nyms<span class="w"> </span>nyms-dev-deidentification<span class="w"> </span>--agent<span class="w"> </span>claude-code
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gh<span class="w"> </span>skill<span class="w"> </span>install<span class="w"> </span>addaix/nyms<span class="w"> </span>nyms-dev-deidentification<span class="w"> </span>--agent<span class="w"> </span>claude-code
 </pre></div>
 </div>
-<p>Source: <a class="reference external" href="https://github.com/thorwhalen/nyms/tree/HEAD/skills/nyms-dev-deidentification"><code class="docutils literal notranslate"><span class="pre">skills/nyms-dev-deidentification</span></code></a>.</p>
+<p>Source: <a class="reference external" href="https://github.com/addaix/nyms/tree/HEAD/skills/nyms-dev-deidentification"><code class="docutils literal notranslate"><span class="pre">skills/nyms-dev-deidentification</span></code></a>.</p>
 <p>The bundled skills are also on disk after <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">nyms</span></code>, under the package’s <code class="docutils literal notranslate"><span class="pre">data/skills/</span></code> directory; link them into an agent without network access with <code class="docutils literal notranslate"><span class="pre">skill</span> <span class="pre">link-skills</span> <span class="pre">&lt;that</span> <span class="pre">directory&gt;</span></code>.</p>
 </section>
 </section>
@@ -404,17 +404,17 @@ machine-readable copies of this documentation.</p>
 <h2>Instruction files<a class="headerlink" href="#instruction-files" title="Link to this heading">#</a></h2>
 <p>Files agents read before working in this repository.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/thorwhalen/nyms/tree/HEAD/.claude/CLAUDE.md"><code class="docutils literal notranslate"><span class="pre">.claude/CLAUDE.md</span></code></a>: read by Claude Code</p></li>
+<li><p><a class="reference external" href="https://github.com/addaix/nyms/tree/HEAD/.claude/CLAUDE.md"><code class="docutils literal notranslate"><span class="pre">.claude/CLAUDE.md</span></code></a>: read by Claude Code</p></li>
 </ul>
 </section>
 <section id="machine-readable-documentation">
 <h2>Machine-readable documentation<a class="headerlink" href="#machine-readable-documentation" title="Link to this heading">#</a></h2>
 <p>This site publishes the same documentation in forms that fit an agent’s context window:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://thorwhalen.github.io/nyms/llms.txt"><code class="docutils literal notranslate"><span class="pre">llms.txt</span></code></a>: an index of every page with a one-line description (<a class="reference external" href="https://llmstxt.org">llms.txt</a> format)</p></li>
-<li><p><a class="reference external" href="https://thorwhalen.github.io/nyms/nyms.md"><code class="docutils literal notranslate"><span class="pre">nyms.md</span></code></a>: the whole documentation as one Markdown file</p></li>
+<li><p><a class="reference external" href="https://addaix.github.io/nyms/llms.txt"><code class="docutils literal notranslate"><span class="pre">llms.txt</span></code></a>: an index of every page with a one-line description (<a class="reference external" href="https://llmstxt.org">llms.txt</a> format)</p></li>
+<li><p><a class="reference external" href="https://addaix.github.io/nyms/nyms.md"><code class="docutils literal notranslate"><span class="pre">nyms.md</span></code></a>: the whole documentation as one Markdown file</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;page&gt;.html.md</span></code>: a rendered Markdown twin of every page, advertised from each page’s <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;alternate&quot;</span> <span class="pre">type=&quot;text/markdown&quot;&gt;</span></code></p></li>
-<li><p><a class="reference external" href="https://thorwhalen.github.io/nyms/objects.inv"><code class="docutils literal notranslate"><span class="pre">objects.inv</span></code></a>: the Sphinx inventory: a symbol-to-URL index (<code class="docutils literal notranslate"><span class="pre">sphobjinv</span> <span class="pre">convert</span> <span class="pre">plain</span> <span class="pre">objects.inv</span> <span class="pre">-</span></code>)</p></li>
+<li><p><a class="reference external" href="https://addaix.github.io/nyms/objects.inv"><code class="docutils literal notranslate"><span class="pre">objects.inv</span></code></a>: the Sphinx inventory: a symbol-to-URL index (<code class="docutils literal notranslate"><span class="pre">sphobjinv</span> <span class="pre">convert</span> <span class="pre">plain</span> <span class="pre">objects.inv</span> <span class="pre">-</span></code>)</p></li>
 </ul>
 </section>
 </section>

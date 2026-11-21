@@ -15,20 +15,20 @@ Skills are folders holding a `SKILL.md` (the [Agent Skills](https://agentskills.
 Pseudonymise documents before any of their content reaches an AI model, re-identify the model’s answer, and check that nothing leaks, with the nyms package (Danish and English; CPR, CVR, names, addresses, phone, e-mail, IBAN, amounts, credentials). Use whenever a user wants to send personal, legal, medical or financial documents to an AI, asks to “anonymise”, “redact”, “remove names”, “mask the CPR numbers”, “de-identify”, “pseudonymise”, “protect privacy before sending to ChatGPT/Claude”, or when you are about to paste someone else’s personal data into a prompt. Also use to put the real names back into an answer (“re-identify”, “restore the names”).
 
 ```bash
-gh skill install thorwhalen/nyms nyms --agent claude-code
+gh skill install addaix/nyms nyms --agent claude-code
 ```
 
-Source: [`nyms/data/skills/nyms`](https://github.com/thorwhalen/nyms/tree/HEAD/nyms/data/skills/nyms) (bundled with the pip package).
+Source: [`nyms/data/skills/nyms`](https://github.com/addaix/nyms/tree/HEAD/nyms/data/skills/nyms) (bundled with the pip package).
 
 ### `nyms-dev-deidentification`
 
 The expert index for working on de-identification and reversible pseudonymisation in the nyms package, for agents developing or extending it. Routes to the research reports (terminology and regulation, detection libraries and methods, surrogates and key management, pipeline architecture), the five ADRs, the seam table, the test rules (leakage, round trip, consistency) and the vocabulary to use. Use when adding a detector or entity type, a surrogate strategy, a store backend, the model-based second pass, Danish or English fixtures, or when a question about pseudonymisation, PII detection, CPR/CVR validation, keyed hashing, format-preserving encryption, re-identification risk or key management comes up while developing nyms.
 
 ```bash
-gh skill install thorwhalen/nyms nyms-dev-deidentification --agent claude-code
+gh skill install addaix/nyms nyms-dev-deidentification --agent claude-code
 ```
 
-Source: [`skills/nyms-dev-deidentification`](https://github.com/thorwhalen/nyms/tree/HEAD/skills/nyms-dev-deidentification).
+Source: [`skills/nyms-dev-deidentification`](https://github.com/addaix/nyms/tree/HEAD/skills/nyms-dev-deidentification).
 
 The bundled skills are also on disk after `pip install nyms`, under the package’s `data/skills/` directory; link them into an agent without network access with `skill link-skills <that directory>`.
 
@@ -36,13 +36,13 @@ The bundled skills are also on disk after `pip install nyms`, under the package�
 
 Files agents read before working in this repository.
 
-- [`.claude/CLAUDE.md`](https://github.com/thorwhalen/nyms/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
+- [`.claude/CLAUDE.md`](https://github.com/addaix/nyms/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
 
 ## Machine-readable documentation
 
 This site publishes the same documentation in forms that fit an agent’s context window:
 
-- [`llms.txt`](https://thorwhalen.github.io/nyms/llms.txt): an index of every page with a one-line description ([llms.txt](https://llmstxt.org) format)
-- [`nyms.md`](https://thorwhalen.github.io/nyms/nyms.md): the whole documentation as one Markdown file
+- [`llms.txt`](https://addaix.github.io/nyms/llms.txt): an index of every page with a one-line description ([llms.txt](https://llmstxt.org) format)
+- [`nyms.md`](https://addaix.github.io/nyms/nyms.md): the whole documentation as one Markdown file
 - `<page>.html.md`: a rendered Markdown twin of every page, advertised from each page’s `<head>` with `<link rel="alternate" type="text/markdown">`
-- [`objects.inv`](https://thorwhalen.github.io/nyms/objects.inv): the Sphinx inventory: a symbol-to-URL index (`sphobjinv convert plain objects.inv -`)
+- [`objects.inv`](https://addaix.github.io/nyms/objects.inv): the Sphinx inventory: a symbol-to-URL index (`sphobjinv convert plain objects.inv -`)

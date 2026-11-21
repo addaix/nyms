@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/documentation_options.js?v=e3a6060d"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -411,7 +411,7 @@ window.runMermaid = runMermaid;</script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1" />
+  <meta name="docsearch:version" content="0.0.2" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -551,7 +551,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -648,7 +648,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -827,7 +827,16 @@ window.runMermaid = runMermaid;</script>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Record</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
-            <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"surrogate"</span><span class="p">,</span> <span class="s2">"original"</span><span class="p">,</span> <span class="s2">"entity_type"</span><span class="p">,</span> <span class="s2">"normalised"</span><span class="p">,</span> <span class="s2">"strategy"</span><span class="p">)},</span>
+            <span class="o">**</span><span class="p">{</span>
+                <span class="n">k</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span>
+                    <span class="s2">"surrogate"</span><span class="p">,</span>
+                    <span class="s2">"original"</span><span class="p">,</span>
+                    <span class="s2">"entity_type"</span><span class="p">,</span>
+                    <span class="s2">"normalised"</span><span class="p">,</span>
+                    <span class="s2">"strategy"</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">},</span>
             <span class="n">created</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"created"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
             <span class="n">aliases</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"aliases"</span><span class="p">,</span> <span class="p">())),</span>
         <span class="p">)</span></div>
@@ -839,7 +848,12 @@ window.runMermaid = runMermaid;</script>
 <span class="k">class</span><span class="w"> </span><span class="nc">MappingStore</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Records keyed by surrogate, with an in-memory index by ``(entity_type, normalised)``."""</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">strategy</span><span class="p">:</span> <span class="n">Strategy</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">store</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">strategy</span><span class="p">:</span> <span class="n">Strategy</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">store</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">store</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">strategy</span><span class="p">:</span> <span class="n">Strategy</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span> <span class="k">if</span> <span class="n">strategy</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">strategy</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reload</span><span class="p">()</span>
@@ -866,7 +880,9 @@ window.runMermaid = runMermaid;</script>
 
     <span class="c1"># -- Vault protocol -------------------------------------------------------</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surrogate</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">surrogate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">surrogate</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">canon</span><span class="p">(</span><span class="n">surrogate</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_canons</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">surrogate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span> <span class="ow">or</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">surrogate</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">canon</span><span class="p">(</span><span class="n">surrogate</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_canons</span>
+        <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">entity_type</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -916,7 +932,7 @@ window.runMermaid = runMermaid;</script>
                 <span class="k">if</span> <span class="n">norm</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="n">base</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_by_value</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">norm</span><span class="p">[:</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">suffix</span><span class="p">)]))</span>
                     <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                        <span class="k">return</span> <span class="n">base</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">suffix</span><span class="p">):]</span>
+                        <span class="k">return</span> <span class="n">base</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span> <span class="p">:]</span>
                 <span class="n">genitive</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_by_value</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">norm</span> <span class="o">+</span> <span class="n">suffix</span><span class="p">))</span>
                 <span class="k">if</span> <span class="n">genitive</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_relink</span><span class="p">(</span><span class="n">genitive</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">norm</span><span class="p">)</span>
@@ -924,12 +940,22 @@ window.runMermaid = runMermaid;</script>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">text</span><span class="p">),</span> <span class="s2">""</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_relink</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surrogate</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">original</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_relink</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">surrogate</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">original</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""A known genitive form turned out to have a base form: the base is the original."""</span>
         <span class="n">rec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">surrogate</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
-        <span class="n">new</span> <span class="o">=</span> <span class="n">Record</span><span class="p">(</span><span class="n">surrogate</span><span class="p">,</span> <span class="n">original</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">strategy</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">created</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">({</span><span class="o">*</span><span class="n">rec</span><span class="o">.</span><span class="n">aliases</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">normalised</span><span class="p">})))</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">Record</span><span class="p">(</span>
+            <span class="n">surrogate</span><span class="p">,</span>
+            <span class="n">original</span><span class="p">,</span>
+            <span class="n">entity_type</span><span class="p">,</span>
+            <span class="n">norm</span><span class="p">,</span>
+            <span class="n">rec</span><span class="o">.</span><span class="n">strategy</span><span class="p">,</span>
+            <span class="n">rec</span><span class="o">.</span><span class="n">created</span><span class="p">,</span>
+            <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">({</span><span class="o">*</span><span class="n">rec</span><span class="o">.</span><span class="n">aliases</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">normalised</span><span class="p">})),</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">surrogate</span><span class="p">]</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_by_value</span><span class="p">[(</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">norm</span><span class="p">)]</span> <span class="o">=</span> <span class="n">surrogate</span>
 
@@ -943,8 +969,17 @@ window.runMermaid = runMermaid;</script>
         <span class="k">if</span> <span class="n">surrogate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">surrogate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">strategy</span><span class="p">(</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">vault</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">surrogate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span> <span class="ow">or</span> <span class="n">canon</span><span class="p">(</span><span class="n">surrogate</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_canons</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"surrogate already in use (or indistinguishable from one): </span><span class="si">{</span><span class="n">surrogate</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">rec</span> <span class="o">=</span> <span class="n">Record</span><span class="p">(</span><span class="n">surrogate</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strategy</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"surrogate already in use (or indistinguishable from one): </span><span class="si">{</span><span class="n">surrogate</span><span class="si">!r}</span><span class="s2">"</span>
+            <span class="p">)</span>
+        <span class="n">rec</span> <span class="o">=</span> <span class="n">Record</span><span class="p">(</span>
+            <span class="n">surrogate</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="n">entity_type</span><span class="p">,</span>
+            <span class="n">norm</span><span class="p">,</span>
+            <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strategy</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">surrogate</span><span class="p">]</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_index</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_n_loaded</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">)</span>
@@ -966,7 +1001,15 @@ window.runMermaid = runMermaid;</script>
         <span class="n">norm</span> <span class="o">=</span> <span class="n">normalise</span><span class="p">(</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rec</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">norm</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_by_value</span><span class="p">:</span>
             <span class="k">return</span>
-        <span class="n">new</span> <span class="o">=</span> <span class="n">Record</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">surrogate</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">original</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">normalised</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">strategy</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">created</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">({</span><span class="o">*</span><span class="n">rec</span><span class="o">.</span><span class="n">aliases</span><span class="p">,</span> <span class="n">norm</span><span class="p">})))</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">Record</span><span class="p">(</span>
+            <span class="n">rec</span><span class="o">.</span><span class="n">surrogate</span><span class="p">,</span>
+            <span class="n">rec</span><span class="o">.</span><span class="n">original</span><span class="p">,</span>
+            <span class="n">rec</span><span class="o">.</span><span class="n">entity_type</span><span class="p">,</span>
+            <span class="n">rec</span><span class="o">.</span><span class="n">normalised</span><span class="p">,</span>
+            <span class="n">rec</span><span class="o">.</span><span class="n">strategy</span><span class="p">,</span>
+            <span class="n">rec</span><span class="o">.</span><span class="n">created</span><span class="p">,</span>
+            <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">({</span><span class="o">*</span><span class="n">rec</span><span class="o">.</span><span class="n">aliases</span><span class="p">,</span> <span class="n">norm</span><span class="p">})),</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">surrogate</span><span class="p">]</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_by_value</span><span class="p">[(</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">norm</span><span class="p">)]</span> <span class="o">=</span> <span class="n">surrogate</span></div>
 
@@ -992,7 +1035,9 @@ window.runMermaid = runMermaid;</script>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_safe_id</span><span class="p">(</span><span class="n">surrogate</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">surrogate</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"ascii"</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">"="</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">surrogate</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"ascii"</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">"="</span><span class="p">)</span>
+    <span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_surrogate_of_id</span><span class="p">(</span><span class="n">file_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -1001,7 +1046,9 @@ window.runMermaid = runMermaid;</script>
 
 <div class="viewcode-block" id="local_mapping_store">
 <a class="viewcode-back" href="../../_autosummary/nyms.mapping.html#nyms.local_mapping_store">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">local_mapping_store</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rootdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">codec</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">local_mapping_store</span><span class="p">(</span>
+    <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rootdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">codec</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""A ``dol`` file store of records under the project dir, optionally through *codec*.</span>
 
 <span class="sd">    *codec* is a pair ``(encode: bytes -&gt; bytes, decode: bytes -&gt; bytes)`` applied to the JSON</span>
@@ -1025,7 +1072,11 @@ window.runMermaid = runMermaid;</script>
         <span class="k">if</span> <span class="n">recorded</span> <span class="o">!=</span> <span class="n">codec_name</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">StoreError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">"project </span><span class="si">{</span><span class="n">project</span><span class="si">!r}</span><span class="s2"> was created with codec </span><span class="si">{</span><span class="n">recorded</span><span class="si">!r}</span><span class="s2"> but is being opened with </span><span class="si">{</span><span class="n">codec_name</span><span class="si">!r}</span><span class="s2">; "</span>
-                <span class="o">+</span> <span class="p">(</span><span class="s2">"pass encrypt=True / --encrypt"</span> <span class="k">if</span> <span class="n">recorded</span> <span class="o">==</span> <span class="s2">"fernet"</span> <span class="k">else</span> <span class="s2">"open it without encryption"</span><span class="p">)</span>
+                <span class="o">+</span> <span class="p">(</span>
+                    <span class="s2">"pass encrypt=True / --encrypt"</span>
+                    <span class="k">if</span> <span class="n">recorded</span> <span class="o">==</span> <span class="s2">"fernet"</span>
+                    <span class="k">else</span> <span class="s2">"open it without encryption"</span>
+                <span class="p">)</span>
             <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">meta</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">"codec"</span><span class="p">:</span> <span class="n">codec_name</span><span class="p">,</span> <span class="s2">"nyms"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span> <span class="s2">"utf-8"</span><span class="p">)</span>
@@ -1038,7 +1089,9 @@ window.runMermaid = runMermaid;</script>
         <span class="n">files</span><span class="p">,</span>
         <span class="n">id_of_key</span><span class="o">=</span><span class="n">_safe_id</span><span class="p">,</span>
         <span class="n">key_of_id</span><span class="o">=</span><span class="n">_surrogate_of_id</span><span class="p">,</span>
-        <span class="n">data_of_obj</span><span class="o">=</span><span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="n">encode</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)),</span>
+        <span class="n">data_of_obj</span><span class="o">=</span><span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="n">encode</span><span class="p">(</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
+        <span class="p">),</span>
         <span class="n">obj_of_data</span><span class="o">=</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)),</span>
     <span class="p">)</span></div>
 
@@ -1061,7 +1114,9 @@ window.runMermaid = runMermaid;</script>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">cryptography.fernet</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fernet</span>
     <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">"encryption at rest needs the optional dependency: pip install 'nyms[crypto]'"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+            <span class="s2">"encryption at rest needs the optional dependency: pip install 'nyms[crypto]'"</span>
+        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
 <span class="w">    </span><span class="kn">import</span> <span class="n">hashlib</span>
 
     <span class="n">fkey</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="sa">b</span><span class="s2">"nyms-store</span><span class="se">\x00</span><span class="s2">"</span> <span class="o">+</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">())</span>

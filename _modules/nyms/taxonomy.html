@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/documentation_options.js?v=e3a6060d"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -411,7 +411,7 @@ window.runMermaid = runMermaid;</script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1" />
+  <meta name="docsearch:version" content="0.0.2" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -551,7 +551,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -648,7 +648,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -767,16 +767,51 @@ window.runMermaid = runMermaid;</script>
 
 <span class="n">ENTITY_TYPES</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">EntityType</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="n">_t</span><span class="p">(</span><span class="s2">"CREDENTIAL"</span><span class="p">,</span> <span class="n">CREDENTIAL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"API keys, tokens, passwords, private keys"</span><span class="p">,</span> <span class="s2">"PASSWORD"</span><span class="p">,</span> <span class="s2">"AWS_CREDENTIALS"</span><span class="p">),</span>
-        <span class="n">_t</span><span class="p">(</span><span class="s2">"PERSON"</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"a natural person's name"</span><span class="p">,</span> <span class="s2">"PERSON"</span><span class="p">,</span> <span class="s2">"PERSON_NAME"</span><span class="p">,</span> <span class="s2">"NAME"</span><span class="p">),</span>
-        <span class="n">_t</span><span class="p">(</span><span class="s2">"CPR"</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Danish personal identity number (personnummer)"</span><span class="p">,</span> <span class="s2">"DENMARK_CPR_NUMBER"</span><span class="p">,</span> <span class="s2">"SSN"</span><span class="p">),</span>
+        <span class="n">_t</span><span class="p">(</span>
+            <span class="s2">"CREDENTIAL"</span><span class="p">,</span>
+            <span class="n">CREDENTIAL</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"API keys, tokens, passwords, private keys"</span><span class="p">,</span>
+            <span class="s2">"PASSWORD"</span><span class="p">,</span>
+            <span class="s2">"AWS_CREDENTIALS"</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">_t</span><span class="p">(</span>
+            <span class="s2">"PERSON"</span><span class="p">,</span>
+            <span class="n">DIRECT</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"a natural person's name"</span><span class="p">,</span>
+            <span class="s2">"PERSON"</span><span class="p">,</span>
+            <span class="s2">"PERSON_NAME"</span><span class="p">,</span>
+            <span class="s2">"NAME"</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">_t</span><span class="p">(</span>
+            <span class="s2">"CPR"</span><span class="p">,</span>
+            <span class="n">DIRECT</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"Danish personal identity number (personnummer)"</span><span class="p">,</span>
+            <span class="s2">"DENMARK_CPR_NUMBER"</span><span class="p">,</span>
+            <span class="s2">"SSN"</span><span class="p">,</span>
+        <span class="p">),</span>
         <span class="n">_t</span><span class="p">(</span><span class="s2">"EMAIL"</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"e-mail address"</span><span class="p">,</span> <span class="s2">"EMAIL_ADDRESS"</span><span class="p">),</span>
         <span class="n">_t</span><span class="p">(</span><span class="s2">"PHONE"</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"telephone number"</span><span class="p">,</span> <span class="s2">"PHONE_NUMBER"</span><span class="p">),</span>
         <span class="n">_t</span><span class="p">(</span><span class="s2">"ADDRESS"</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"street address"</span><span class="p">,</span> <span class="s2">"LOCATION"</span><span class="p">,</span> <span class="s2">"STREET_ADDRESS"</span><span class="p">),</span>
         <span class="n">_t</span><span class="p">(</span><span class="s2">"IBAN"</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"international bank account number"</span><span class="p">,</span> <span class="s2">"IBAN_CODE"</span><span class="p">),</span>
-        <span class="n">_t</span><span class="p">(</span><span class="s2">"BANK_ACCOUNT"</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Danish registreringsnummer and kontonummer"</span><span class="p">,</span> <span class="s2">"BANK_ACCOUNT_NUMBER"</span><span class="p">),</span>
+        <span class="n">_t</span><span class="p">(</span>
+            <span class="s2">"BANK_ACCOUNT"</span><span class="p">,</span>
+            <span class="n">DIRECT</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"Danish registreringsnummer and kontonummer"</span><span class="p">,</span>
+            <span class="s2">"BANK_ACCOUNT_NUMBER"</span><span class="p">,</span>
+        <span class="p">),</span>
         <span class="n">_t</span><span class="p">(</span><span class="s2">"CASE_ID"</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"court case, journal or file number"</span><span class="p">),</span>
-        <span class="n">_t</span><span class="p">(</span><span class="s2">"CVR"</span><span class="p">,</span> <span class="n">ORGANISATION</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"Danish company registration number"</span><span class="p">,</span> <span class="s2">"DENMARK_CVR_NUMBER"</span><span class="p">,</span> <span class="s2">"VAT_NUMBER"</span><span class="p">),</span>
+        <span class="n">_t</span><span class="p">(</span>
+            <span class="s2">"CVR"</span><span class="p">,</span>
+            <span class="n">ORGANISATION</span><span class="p">,</span>
+            <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"Danish company registration number"</span><span class="p">,</span>
+            <span class="s2">"DENMARK_CVR_NUMBER"</span><span class="p">,</span>
+            <span class="s2">"VAT_NUMBER"</span><span class="p">,</span>
+        <span class="p">),</span>
         <span class="n">_t</span><span class="p">(</span><span class="s2">"ORG"</span><span class="p">,</span> <span class="n">ORGANISATION</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"organisation name"</span><span class="p">,</span> <span class="s2">"ORGANIZATION"</span><span class="p">,</span> <span class="s2">"NRP"</span><span class="p">),</span>
         <span class="n">_t</span><span class="p">(</span><span class="s2">"AMOUNT"</span><span class="p">,</span> <span class="n">SENSITIVE</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"a monetary amount"</span><span class="p">,</span> <span class="s2">"FINANCIAL"</span><span class="p">),</span>
         <span class="n">_t</span><span class="p">(</span><span class="s2">"DATE"</span><span class="p">,</span> <span class="n">QUASI</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"a calendar date"</span><span class="p">,</span> <span class="s2">"DATE_TIME"</span><span class="p">),</span>

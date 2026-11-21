@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/documentation_options.js?v=e3a6060d"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -411,7 +411,7 @@ window.runMermaid = runMermaid;</script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1" />
+  <meta name="docsearch:version" content="0.0.2" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -551,7 +551,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -648,7 +648,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -792,14 +792,22 @@ window.runMermaid = runMermaid;</script>
 <span class="sd">    &gt;&gt;&gt; len(default_wordlist())</span>
 <span class="sd">    1296</span>
 <span class="sd">    """</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s2">"nyms.data.wordlists"</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">"eff_short_wordlist_2_0.txt"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span></div>
+    <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s2">"nyms.data.wordlists"</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">"eff_short_wordlist_2_0.txt"</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="words_from_bytes">
 <a class="viewcode-back" href="../../_autosummary/nyms.surrogates.html#nyms.words_from_bytes">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">words_from_bytes</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">wordlist</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">words_from_bytes</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">wordlist</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""Render *data* as *n* words from *wordlist* (default: the EFF short list).</span>
 
 <span class="sd">    The integer value of the bytes is written in base ``len(wordlist)``; the lowest *n*</span>
@@ -857,7 +865,9 @@ window.runMermaid = runMermaid;</script>
 <span class="sd">    """</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">16</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"key must be at least 16 bytes"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">entity_type</span><span class="si">}</span><span class="se">\x00</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">),</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+        <span class="n">key</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">entity_type</span><span class="si">}</span><span class="se">\x00</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">),</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span></div>
 
 
 
@@ -904,7 +914,9 @@ window.runMermaid = runMermaid;</script>
     <span class="n">key</span><span class="p">:</span> <span class="nb">bytes</span>
     <span class="n">n_words</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">wordlist</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">templates</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">DEFAULT_WORD_TEMPLATES</span><span class="p">))</span>
+    <span class="n">templates</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">DEFAULT_WORD_TEMPLATES</span><span class="p">)</span>
+    <span class="p">)</span>
     <span class="n">default_template</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_WORD_TEMPLATE</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">vault</span><span class="p">:</span> <span class="n">Vault</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -912,7 +924,11 @@ window.runMermaid = runMermaid;</script>
         <span class="n">template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">templates</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">entity_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_template</span><span class="p">)</span>
         <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_words</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">_render</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">words_from_bytes</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">wordlist</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wordlist</span><span class="p">))</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">_render</span><span class="p">(</span>
+                <span class="n">template</span><span class="p">,</span>
+                <span class="n">entity_type</span><span class="p">,</span>
+                <span class="n">words_from_bytes</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">wordlist</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wordlist</span><span class="p">),</span>
+            <span class="p">)</span>
             <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vault</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">s</span>
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># a collision with another value: one more word disambiguates</span></div>
@@ -927,13 +943,21 @@ window.runMermaid = runMermaid;</script>
 
     <span class="n">n_words</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">wordlist</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">templates</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">DEFAULT_WORD_TEMPLATES</span><span class="p">))</span>
+    <span class="n">templates</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">DEFAULT_WORD_TEMPLATES</span><span class="p">)</span>
+    <span class="p">)</span>
     <span class="n">default_template</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_WORD_TEMPLATE</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">vault</span><span class="p">:</span> <span class="n">Vault</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">templates</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">entity_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_template</span><span class="p">)</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">_render</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">words_from_bytes</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">token_bytes</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">n</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_words</span><span class="p">,</span> <span class="n">wordlist</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wordlist</span><span class="p">))</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">_render</span><span class="p">(</span>
+                <span class="n">template</span><span class="p">,</span>
+                <span class="n">entity_type</span><span class="p">,</span>
+                <span class="n">words_from_bytes</span><span class="p">(</span>
+                    <span class="n">secrets</span><span class="o">.</span><span class="n">token_bytes</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">n</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_words</span><span class="p">,</span> <span class="n">wordlist</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wordlist</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
             <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vault</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">s</span></div>
 
@@ -956,16 +980,27 @@ window.runMermaid = runMermaid;</script>
     <span class="n">fallback</span><span class="p">:</span> <span class="n">Strategy</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">Counter</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_lookup</span> <span class="o">=</span> <span class="p">{</span><span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()):</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">aliases</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lookup</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()):</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">aliases</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">vault</span><span class="p">:</span> <span class="n">Vault</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lookup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">fallback</span><span class="p">(</span><span class="n">entity_type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">vault</span><span class="o">=</span><span class="n">vault</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lookup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">fallback</span><span class="p">(</span>
+            <span class="n">entity_type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">vault</span><span class="o">=</span><span class="n">vault</span>
+        <span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="readable">
 <a class="viewcode-back" href="../../_autosummary/nyms.surrogates.html#nyms.readable">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">readable</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"VALUE"</span><span class="p">,</span> <span class="n">n_words</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">wordlist</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">readable</span><span class="p">(</span>
+    <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+    <span class="n">entity_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"VALUE"</span><span class="p">,</span>
+    <span class="n">n_words</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">wordlist</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""The stand-alone tool: a keyed hash of *value*, as readable words.</span>
 
 <span class="sd">    &gt;&gt;&gt; readable('010190-1234', key=b'0' * 32) == readable('010190-1234', key=b'0' * 32)</span>
@@ -973,7 +1008,11 @@ window.runMermaid = runMermaid;</script>
 <span class="sd">    &gt;&gt;&gt; readable('010190-1234', key=b'0' * 32) != readable('010190-1234', key=b'1' * 32)</span>
 <span class="sd">    True</span>
 <span class="sd">    """</span>
-    <span class="k">return</span> <span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words_from_bytes</span><span class="p">(</span><span class="n">keyed_digest</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span> <span class="n">n</span><span class="o">=</span><span class="n">n_words</span><span class="p">,</span> <span class="n">wordlist</span><span class="o">=</span><span class="n">wordlist</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">words_from_bytes</span><span class="p">(</span>
+            <span class="n">keyed_digest</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span> <span class="n">n</span><span class="o">=</span><span class="n">n_words</span><span class="p">,</span> <span class="n">wordlist</span><span class="o">=</span><span class="n">wordlist</span>
+        <span class="p">)</span>
+    <span class="p">)</span></div>
 
 </pre></div>
 

@@ -1,4 +1,4 @@
-> built 2026-11-08 07:52 UTC from 662a40a (main) · nyms 0.0.1. Details: build_info.json
+> built 2026-11-21 15:50 UTC from e2aef8a (main) · nyms 0.0.2. Details: build_info.json
 
 # index.html.md
 
@@ -1373,29 +1373,29 @@ Put the originals back into the text (an AI’s answer, say). Lists tokens it co
 
 # About this build
 
-This documentation was built on **2026-11-08 07:52 UTC** from commit <a href="https://github.com/thorwhalen/nyms/commit/662a40aab35829359d43c04ee904c4deacb80406"><code>662a40a</code></a> on branch <code>main</code>, for **nyms 0.0.1** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-21 15:50 UTC** from commit <a href="https://github.com/addaix/nyms/commit/e2aef8a3584296c29c6708099376b2f851e7dbf5"><code>e2aef8a</code></a> on branch <code>main</code>, for **nyms 0.0.2** (from <code>pyproject.toml</code>).
 
 #### NOTE
 Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
-|                     |                                                                                                                                                        |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/thorwhalen/nyms/commit/662a40aab35829359d43c04ee904c4deacb80406"><code>662a40aab35829359d43c04ee904c4deacb80406</code></a> |
-| Branch              | <code>main</code>                                                                                                                                      |
-| Tags at this commit | none                                                                                                                                                   |
-| Working tree        | clean                                                                                                                                                  |
-| Remote              | <code>https://github.com/thorwhalen/nyms</code>                                                                                                        |
+|                     |                                                                                                                                                    |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Commit              | <a href="https://github.com/addaix/nyms/commit/e2aef8a3584296c29c6708099376b2f851e7dbf5"><code>e2aef8a3584296c29c6708099376b2f851e7dbf5</code></a> |
+| Branch              | <code>main</code>                                                                                                                                  |
+| Tags at this commit | none                                                                                                                                               |
+| Working tree        | clean                                                                                                                                              |
+| Remote              | <code>https://github.com/addaix/nyms</code>                                                                                                        |
 
 ## Continuous integration
 
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
-| Repository   | <code>thorwhalen/nyms</code>                                                               |
-| Run          | <a href="https://github.com/thorwhalen/nyms/actions/runs/42460442417">42460442417</a>      |
+| Repository   | <code>addaix/nyms</code>                                                                   |
+| Run          | <a href="https://github.com/addaix/nyms/actions/runs/44921237801">44921237801</a>          |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>662a40aab35829359d43c04ee904c4deacb80406</code> (in the history of the built commit) |
+| Event commit | <code>e2aef8a3584296c29c6708099376b2f851e7dbf5</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -1420,13 +1420,13 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 ## Package on PyPI
 
-<code>nyms</code> is not on PyPI.
+Latest release: <a href="https://pypi.org/project/nyms/0.0.2/">0.0.2</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
-git clone https://github.com/thorwhalen/nyms && cd nyms
-git checkout 662a40aab35829359d43c04ee904c4deacb80406
+git clone https://github.com/addaix/nyms && cd nyms
+git checkout e2aef8a3584296c29c6708099376b2f851e7dbf5
 pip install "epythet==0.2.22"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
@@ -1453,20 +1453,20 @@ Skills are folders holding a `SKILL.md` (the [Agent Skills](https://agentskills.
 Pseudonymise documents before any of their content reaches an AI model, re-identify the model’s answer, and check that nothing leaks, with the nyms package (Danish and English; CPR, CVR, names, addresses, phone, e-mail, IBAN, amounts, credentials). Use whenever a user wants to send personal, legal, medical or financial documents to an AI, asks to “anonymise”, “redact”, “remove names”, “mask the CPR numbers”, “de-identify”, “pseudonymise”, “protect privacy before sending to ChatGPT/Claude”, or when you are about to paste someone else’s personal data into a prompt. Also use to put the real names back into an answer (“re-identify”, “restore the names”).
 
 ```bash
-gh skill install thorwhalen/nyms nyms --agent claude-code
+gh skill install addaix/nyms nyms --agent claude-code
 ```
 
-Source: [`nyms/data/skills/nyms`](https://github.com/thorwhalen/nyms/tree/HEAD/nyms/data/skills/nyms) (bundled with the pip package).
+Source: [`nyms/data/skills/nyms`](https://github.com/addaix/nyms/tree/HEAD/nyms/data/skills/nyms) (bundled with the pip package).
 
 ### `nyms-dev-deidentification`
 
 The expert index for working on de-identification and reversible pseudonymisation in the nyms package, for agents developing or extending it. Routes to the research reports (terminology and regulation, detection libraries and methods, surrogates and key management, pipeline architecture), the five ADRs, the seam table, the test rules (leakage, round trip, consistency) and the vocabulary to use. Use when adding a detector or entity type, a surrogate strategy, a store backend, the model-based second pass, Danish or English fixtures, or when a question about pseudonymisation, PII detection, CPR/CVR validation, keyed hashing, format-preserving encryption, re-identification risk or key management comes up while developing nyms.
 
 ```bash
-gh skill install thorwhalen/nyms nyms-dev-deidentification --agent claude-code
+gh skill install addaix/nyms nyms-dev-deidentification --agent claude-code
 ```
 
-Source: [`skills/nyms-dev-deidentification`](https://github.com/thorwhalen/nyms/tree/HEAD/skills/nyms-dev-deidentification).
+Source: [`skills/nyms-dev-deidentification`](https://github.com/addaix/nyms/tree/HEAD/skills/nyms-dev-deidentification).
 
 The bundled skills are also on disk after `pip install nyms`, under the package’s `data/skills/` directory; link them into an agent without network access with `skill link-skills <that directory>`.
 
@@ -1474,16 +1474,16 @@ The bundled skills are also on disk after `pip install nyms`, under the package�
 
 Files agents read before working in this repository.
 
-- [`.claude/CLAUDE.md`](https://github.com/thorwhalen/nyms/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
+- [`.claude/CLAUDE.md`](https://github.com/addaix/nyms/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
 
 ## Machine-readable documentation
 
 This site publishes the same documentation in forms that fit an agent’s context window:
 
-- [`llms.txt`](https://thorwhalen.github.io/nyms/llms.txt): an index of every page with a one-line description ([llms.txt](https://llmstxt.org) format)
-- [`nyms.md`](https://thorwhalen.github.io/nyms/nyms.md): the whole documentation as one Markdown file
+- [`llms.txt`](https://addaix.github.io/nyms/llms.txt): an index of every page with a one-line description ([llms.txt](https://llmstxt.org) format)
+- [`nyms.md`](https://addaix.github.io/nyms/nyms.md): the whole documentation as one Markdown file
 - `<page>.html.md`: a rendered Markdown twin of every page, advertised from each page’s `<head>` with `<link rel="alternate" type="text/markdown">`
-- [`objects.inv`](https://thorwhalen.github.io/nyms/objects.inv): the Sphinx inventory: a symbol-to-URL index (`sphobjinv convert plain objects.inv -`)
+- [`objects.inv`](https://addaix.github.io/nyms/objects.inv): the Sphinx inventory: a symbol-to-URL index (`sphobjinv convert plain objects.inv -`)
 
 
 # api.html.md

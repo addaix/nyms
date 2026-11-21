@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/documentation_options.js?v=e3a6060d"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -411,7 +411,7 @@ window.runMermaid = runMermaid;</script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1" />
+  <meta name="docsearch:version" content="0.0.2" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -551,7 +551,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -648,7 +648,7 @@ window.runMermaid = runMermaid;</script>
           
           
           
-          <a href="https://github.com/thorwhalen/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+          <a href="https://github.com/addaix/nyms" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -758,7 +758,9 @@ window.runMermaid = runMermaid;</script>
 <a class="viewcode-back" href="../../_autosummary/nyms.keys.html#nyms.keys.config_dir">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">config_dir</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""``$XDG_CONFIG_HOME/nyms`` or ``~/.config/nyms``."""</span>
-    <span class="n">base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"XDG_CONFIG_HOME"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~"</span><span class="p">),</span> <span class="s2">".config"</span><span class="p">)</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"XDG_CONFIG_HOME"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~"</span><span class="p">),</span> <span class="s2">".config"</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"nyms"</span></div>
 
 
@@ -767,14 +769,20 @@ window.runMermaid = runMermaid;</script>
 <a class="viewcode-back" href="../../_autosummary/nyms.keys.html#nyms.keys.data_dir">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">data_dir</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""``$XDG_DATA_HOME/nyms`` or ``~/.local/share/nyms``: where mapping stores live by default."""</span>
-    <span class="n">base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"XDG_DATA_HOME"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~"</span><span class="p">),</span> <span class="s2">".local"</span><span class="p">,</span> <span class="s2">"share"</span><span class="p">)</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"XDG_DATA_HOME"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~"</span><span class="p">),</span> <span class="s2">".local"</span><span class="p">,</span> <span class="s2">"share"</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"nyms"</span></div>
 
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">key_path</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
     <span class="n">_check_project_name</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">key_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">.key"</span> <span class="k">if</span> <span class="n">key_dir</span> <span class="k">else</span> <span class="n">config_dir</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"keys"</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">.key"</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">Path</span><span class="p">(</span><span class="n">key_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">.key"</span>
+        <span class="k">if</span> <span class="n">key_dir</span>
+        <span class="k">else</span> <span class="n">config_dir</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"keys"</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">.key"</span>
+    <span class="p">)</span>
 
 
 <span class="n">_PROJECT_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[A-Za-z0-9][A-Za-z0-9._-]{0,63}"</span><span class="p">)</span>
@@ -817,7 +825,15 @@ window.runMermaid = runMermaid;</script>
 <a class="viewcode-back" href="../../_autosummary/nyms.keys.html#nyms.keys.derive_key">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">derive_key</span><span class="p">(</span><span class="n">passphrase</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">salt</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">KEY_BYTES</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""scrypt key derivation (stdlib). Argon2id is the replacement when ``argon2-cffi`` is wanted."""</span>
-    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">scrypt</span><span class="p">(</span><span class="n">passphrase</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">),</span> <span class="n">salt</span><span class="o">=</span><span class="n">salt</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">_SCRYPT_N</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">_SCRYPT_R</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">_SCRYPT_P</span><span class="p">,</span> <span class="n">maxmem</span><span class="o">=</span><span class="n">_SCRYPT_MAXMEM</span><span class="p">,</span> <span class="n">dklen</span><span class="o">=</span><span class="n">length</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">scrypt</span><span class="p">(</span>
+        <span class="n">passphrase</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">),</span>
+        <span class="n">salt</span><span class="o">=</span><span class="n">salt</span><span class="p">,</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">_SCRYPT_N</span><span class="p">,</span>
+        <span class="n">r</span><span class="o">=</span><span class="n">_SCRYPT_R</span><span class="p">,</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">_SCRYPT_P</span><span class="p">,</span>
+        <span class="n">maxmem</span><span class="o">=</span><span class="n">_SCRYPT_MAXMEM</span><span class="p">,</span>
+        <span class="n">dklen</span><span class="o">=</span><span class="n">length</span><span class="p">,</span>
+    <span class="p">)</span></div>
 
 
 
