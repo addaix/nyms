@@ -1087,12 +1087,12 @@ window.runMermaid = runMermaid;</script>
         <span class="n">encode</span><span class="p">,</span> <span class="n">decode</span> <span class="o">=</span> <span class="n">codec</span>
     <span class="k">return</span> <span class="n">dol</span><span class="o">.</span><span class="n">wrap_kvs</span><span class="p">(</span>
         <span class="n">files</span><span class="p">,</span>
-        <span class="n">id_of_key</span><span class="o">=</span><span class="n">_safe_id</span><span class="p">,</span>
-        <span class="n">key_of_id</span><span class="o">=</span><span class="n">_surrogate_of_id</span><span class="p">,</span>
-        <span class="n">data_of_obj</span><span class="o">=</span><span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="n">encode</span><span class="p">(</span>
+        <span class="n">key_encoder</span><span class="o">=</span><span class="n">_safe_id</span><span class="p">,</span>
+        <span class="n">key_decoder</span><span class="o">=</span><span class="n">_surrogate_of_id</span><span class="p">,</span>
+        <span class="n">value_encoder</span><span class="o">=</span><span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="n">encode</span><span class="p">(</span>
             <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
         <span class="p">),</span>
-        <span class="n">obj_of_data</span><span class="o">=</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)),</span>
+        <span class="n">value_decoder</span><span class="o">=</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)),</span>
     <span class="p">)</span></div>
 
 
