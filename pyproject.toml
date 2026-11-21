@@ -21,9 +21,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/thorwhalen/nyms"
-Repository = "https://github.com/thorwhalen/nyms"
-Documentation = "https://thorwhalen.github.io/nyms"
+Homepage = "https://github.com/addaix/nyms"
+Repository = "https://github.com/addaix/nyms"
+Documentation = "https://addaix.github.io/nyms"
 
 [project.scripts]
 nyms = "nyms.__main__:main"
