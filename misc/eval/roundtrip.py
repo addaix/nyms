@@ -7,8 +7,8 @@ was given:
 - **kept**: occurrences written exactly as issued;
 - **altered**: occurrences the tolerant matcher still restores but that were not exact
   (case, spacing, a dropped bracket, a genitive);
-- **mangled**: name-shaped surrogates of which the model kept only part ("Mr Brook"), which
-  the matcher cannot restore;
+- **mangled**: leftover fragments of name-shaped surrogates ("Mr Brook"; a run of name
+  words counts once), which the matcher cannot restore;
 - **invented**: bracketed tokens in the output that were never issued (cannot be restored);
 - **restored**: what :meth:`nyms.Pseudonymiser.reidentify` put back.
 
@@ -68,19 +68,38 @@ def _pseudonymised(lang, form):
     return p, r.text, sorted({s for _, s in r.replacements})
 
 
+def _name_fragments(issued):
+    """Pattern matching one leftover fragment of a name-shaped surrogate.
+
+    A fragment is a run of whitespace-separated words taken from the issued names, so
+    "Mr Zodiac" (from ``Zodiac Zodiac``) or "Foggy Folksong" (a reordered
+    ``Folksong Foggy``) each count once, and a word shared by two names is not counted
+    twice. Matches nothing when no name-shaped surrogate was issued.
+
+    >>> pat = _name_fragments(["Zodiac Zodiac", "Kayak Outhouse", "[EMAIL:a-b]"])
+    >>> pat.findall("Dear Mr Zodiac, and Outhouse Kayak.")
+    ['Zodiac', 'Outhouse Kayak']
+    >>> _name_fragments(["[PERSON_1]"]).findall("Zodiac")
+    []
+    """
+    words = sorted(
+        {w for s in issued if not s.startswith("[") for w in s.split()},
+        key=len,
+        reverse=True,
+    )
+    if not words:
+        return re.compile(r"(?!)")
+    word = "(?:" + "|".join(map(re.escape, words)) + ")"
+    return re.compile(rf"(?<!\w){word}(?:\s+{word})*(?!\w)")
+
+
 def _measure(p, issued, output):
     pattern = _tolerant_pattern(issued)
     kept = sum(output.count(s) for s in issued)
     tolerant = len(pattern.findall(output))
     present = {s for s in issued if _tolerant_pattern([s]).search(output)}
-    names = [s for s in issued if not s.startswith("[")]
-    mangled = 0
     stripped = pattern.sub(" ", output)
-    for s in names:
-        mangled += sum(
-            len(re.findall(rf"(?<!\w){re.escape(w)}(?!\w)", stripped))
-            for w in s.split()
-        )
+    mangled = len(_name_fragments(issued).findall(stripped))
     back = p.reidentify(output)
     invented = [
         t
@@ -156,7 +175,7 @@ def summarise(rows):
             ):
                 a[k] += r[k]
     lines = [
-        "| form | task | runs | surrogates given | present after | kept exact | altered (restorable) | name parts left (lost) | invented | restored |",
+        "| form | task | runs | surrogates given | present after | kept exact | altered (restorable) | name fragments left (lost) | invented | restored |",
         "|---|---|---|---|---|---|---|---|---|---|",
     ]
     for (form, task), a in sorted(
