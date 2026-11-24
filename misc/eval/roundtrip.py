@@ -39,14 +39,21 @@ from nyms.core import Pseudonymiser, _leftover_tokens, _tolerant_pattern
 from nyms.surrogates import Counter, KeyedWords
 
 HERE = Path(__file__).resolve().parents[2]
-FIXTURES = {"da": HERE / "tests/fixtures/da_lejesag.md", "en": HERE / "tests/fixtures/en_letter.md"}
+FIXTURES = {
+    "da": HERE / "tests/fixtures/da_lejesag.md",
+    "en": HERE / "tests/fixtures/en_letter.md",
+}
 OTHER = {"da": "English", "en": "Danish"}
 SAME = {"da": "Danish", "en": "English"}
 KEY = b"nyms-roundtrip-eval-fixed-key-32b"
 FORMS = {
     "counter": lambda: Counter(),  # [PERSON_1]
-    "keyed-names": lambda: KeyedWords(KEY),  # PERSON/ORG as "Alder Brook", others [TYPE:word-word]
-    "keyed-words": lambda: KeyedWords(KEY, templates={}),  # every type as [TYPE:word-word]
+    "keyed-names": lambda: KeyedWords(
+        KEY
+    ),  # PERSON/ORG as "Alder Brook", others [TYPE:word-word]
+    "keyed-words": lambda: KeyedWords(
+        KEY, templates={}
+    ),  # every type as [TYPE:word-word]
 }
 TASKS = {
     "summary": "Summarise this document in five bullet points, in {same}.",
@@ -70,9 +77,16 @@ def _measure(p, issued, output):
     mangled = 0
     stripped = pattern.sub(" ", output)
     for s in names:
-        mangled += sum(len(re.findall(rf"(?<!\w){re.escape(w)}(?!\w)", stripped)) for w in s.split())
+        mangled += sum(
+            len(re.findall(rf"(?<!\w){re.escape(w)}(?!\w)", stripped))
+            for w in s.split()
+        )
     back = p.reidentify(output)
-    invented = [t for t in _leftover_tokens(output) if t not in issued and not pattern.fullmatch(t)]
+    invented = [
+        t
+        for t in _leftover_tokens(output)
+        if t not in issued and not pattern.fullmatch(t)
+    ]
     return dict(
         issued=len(issued),
         present=len(present),
@@ -91,7 +105,11 @@ def run(models, reps, jobs, outdir):
         for form in FORMS:
             p, text, issued = _pseudonymised(lang, form)
             for task, tmpl in TASKS.items():
-                prompt = tmpl.format(same=SAME[lang], other=OTHER[lang]) + "\n\n---\n\n" + text
+                prompt = (
+                    tmpl.format(same=SAME[lang], other=OTHER[lang])
+                    + "\n\n---\n\n"
+                    + text
+                )
                 for model in models:
                     for rep in range(reps):
                         cases.append((lang, form, task, model, rep, p, issued, prompt))
@@ -107,7 +125,14 @@ def run(models, reps, jobs, outdir):
         else:
             output = chat(prompt, model=model)
             path.write_text(output)
-        return dict(lang=lang, form=form, task=task, model=model, rep=rep, **_measure(p, issued, output))
+        return dict(
+            lang=lang,
+            form=form,
+            task=task,
+            model=model,
+            rep=rep,
+            **_measure(p, issued, output),
+        )
 
     with ThreadPoolExecutor(jobs) as pool:
         return list(pool.map(one, cases))
@@ -119,13 +144,24 @@ def summarise(rows):
         for key in [(r["form"], "all"), (r["form"], r["task"])]:
             a = agg[key]
             a["runs"] += 1
-            for k in ("issued", "present", "kept", "altered", "mangled", "invented", "restored", "unrestored_tokens"):
+            for k in (
+                "issued",
+                "present",
+                "kept",
+                "altered",
+                "mangled",
+                "invented",
+                "restored",
+                "unrestored_tokens",
+            ):
                 a[k] += r[k]
     lines = [
         "| form | task | runs | surrogates given | present after | kept exact | altered (restorable) | name parts left (lost) | invented | restored |",
         "|---|---|---|---|---|---|---|---|---|---|",
     ]
-    for (form, task), a in sorted(agg.items(), key=lambda kv: (kv[0][0], kv[0][1] != "all", kv[0][1])):
+    for (form, task), a in sorted(
+        agg.items(), key=lambda kv: (kv[0][0], kv[0][1] != "all", kv[0][1])
+    ):
         lines.append(
             f"| {form} | {task} | {a['runs']} | {a['issued']} | {a['present']} ({100 * a['present'] / a['issued']:.0f}%) | "
             f"{a['kept']} | {a['altered']} | {a['mangled']} | {a['invented']} | {a['restored']} |"
@@ -135,14 +171,18 @@ def summarise(rows):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--models", nargs="+", default=["claude-cli/haiku", "claude-cli/sonnet"])
+    ap.add_argument(
+        "--models", nargs="+", default=["claude-cli/haiku", "claude-cli/sonnet"]
+    )
     ap.add_argument("--reps", type=int, default=2)
     ap.add_argument("--jobs", type=int, default=4)
     ap.add_argument("--outdir", default=None)
     a = ap.parse_args()
     from nyms.keys import data_dir
 
-    outdir = Path(a.outdir or data_dir() / "eval" / f"roundtrip-{dt.date.today():%Y-%m-%d}")
+    outdir = Path(
+        a.outdir or data_dir() / "eval" / f"roundtrip-{dt.date.today():%Y-%m-%d}"
+    )
     outdir.mkdir(parents=True, exist_ok=True)
     rows = run(a.models, a.reps, a.jobs, outdir)
     (outdir / "rows.json").write_text(json.dumps(rows, indent=1))
