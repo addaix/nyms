@@ -1,32 +1,32 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-24T02:04:11Z",
+  "built_at": "2026-11-24T04:38:33Z",
   "package": {
     "name": "nyms",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "display_name": "nyms",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "86bc26abb4e7d20a13c6772219897d0228ca5b3c",
-    "short_commit": "86bc26a",
+    "commit": "e9a34f12f7bdeaeb787e262b26b6941b49fb44b6",
+    "short_commit": "e9a34f1",
     "branch": "main",
     "tags": [],
     "dirty": false,
     "remote_url": "https://github.com/addaix/nyms",
-    "commit_url": "https://github.com/addaix/nyms/commit/86bc26abb4e7d20a13c6772219897d0228ca5b3c",
+    "commit_url": "https://github.com/addaix/nyms/commit/e9a34f12f7bdeaeb787e262b26b6941b49fb44b6",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "addaix/nyms",
-    "sha": "86bc26abb4e7d20a13c6772219897d0228ca5b3c",
+    "sha": "e9a34f12f7bdeaeb787e262b26b6941b49fb44b6",
     "sha_in_history": true,
     "ref": "refs/heads/main",
     "ref_name": "main",
-    "run_id": "45309439142",
-    "run_url": "https://github.com/addaix/nyms/actions/runs/45309439142",
+    "run_id": "45327637344",
+    "run_url": "https://github.com/addaix/nyms/actions/runs/45327637344",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -61,15 +61,13 @@
   "pypi": {
     "checked": true,
     "latest": "0.0.4",
-    "relation": "behind",
+    "relation": "same",
     "error": null
   },
-  "reproduce": "git clone https://github.com/addaix/nyms && cd nyms\ngit checkout 86bc26abb4e7d20a13c6772219897d0228ca5b3c\npip install \"epythet==0.2.25\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/addaix/nyms && cd nyms\ngit checkout e9a34f12f7bdeaeb787e262b26b6941b49fb44b6\npip install \"epythet==0.2.25\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
-    "aligned": false,
-    "notes": [
-      "The documented version (0.0.3) is behind the latest release on PyPI (0.0.4): `pip install nyms` gives newer code than these docs describe."
-    ]
+    "aligned": true,
+    "notes": []
   }
 }
