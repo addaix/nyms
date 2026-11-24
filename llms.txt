@@ -20,7 +20,7 @@
 - [nyms.taxonomy](_autosummary/nyms.taxonomy.html.md): The entity taxonomy: what kinds of things nyms detects, and how sensitive each is.
 - [nyms.tools](_autosummary/nyms.tools.html.md): The SSOT of operations: plain functions, JSON-able in and out, surface-agnostic.
 - [For AI agents](ai-agents.html.md): &#96;nyms&#96; ships artifacts for coding agents alongside its code. This page lists
-- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-21 18:16 UTC&#42;&#42; from commit &lt;a href="https://github.com/add...
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-24 02:04 UTC&#42;&#42; from commit &lt;a href="https://github.com/add...
 
 ## Optional
 

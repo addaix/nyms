@@ -1,4 +1,4 @@
-> built 2026-11-21 18:16 UTC from 0b877c5 (main) · nyms 0.0.2. Details: build_info.json
+> built 2026-11-24 02:04 UTC from 86bc26a (main) · nyms 0.0.3. Details: build_info.json
 
 # index.html.md
 
@@ -1373,18 +1373,18 @@ Put the originals back into the text (an AI’s answer, say). Lists tokens it co
 
 # About this build
 
-This documentation was built on **2026-11-21 18:16 UTC** from commit <a href="https://github.com/addaix/nyms/commit/0b877c5a37f7bc543dfcd16c3c634f8bc5847312"><code>0b877c5</code></a> on branch <code>main</code>, for **nyms 0.0.2** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-24 02:04 UTC** from commit <a href="https://github.com/addaix/nyms/commit/86bc26abb4e7d20a13c6772219897d0228ca5b3c"><code>86bc26a</code></a> on branch <code>main</code>, for **nyms 0.0.3** (from <code>pyproject.toml</code>).
 
 #### WARNING
 The documentation and the package may be misaligned:
 
-- The documented version (0.0.2) is behind the latest release on PyPI (0.0.3): `pip install nyms` gives newer code than these docs describe.
+- The documented version (0.0.3) is behind the latest release on PyPI (0.0.4): `pip install nyms` gives newer code than these docs describe.
 
 ## Source
 
 |                     |                                                                                                                                                    |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/addaix/nyms/commit/0b877c5a37f7bc543dfcd16c3c634f8bc5847312"><code>0b877c5a37f7bc543dfcd16c3c634f8bc5847312</code></a> |
+| Commit              | <a href="https://github.com/addaix/nyms/commit/86bc26abb4e7d20a13c6772219897d0228ca5b3c"><code>86bc26abb4e7d20a13c6772219897d0228ca5b3c</code></a> |
 | Branch              | <code>main</code>                                                                                                                                  |
 | Tags at this commit | none                                                                                                                                               |
 | Working tree        | clean                                                                                                                                              |
@@ -1395,15 +1395,15 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>addaix/nyms</code>                                                                   |
-| Run          | <a href="https://github.com/addaix/nyms/actions/runs/44934484727">44934484727</a>          |
+| Run          | <a href="https://github.com/addaix/nyms/actions/runs/45309439142">45309439142</a>          |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>0b877c5a37f7bc543dfcd16c3c634f8bc5847312</code> (in the history of the built commit) |
+| Event commit | <code>86bc26abb4e7d20a13c6772219897d0228ca5b3c</code> (in the history of the built commit) |
 
 ## Tools
 
 |          |         |
 |----------|---------|
-| epythet  | 0.2.23  |
+| epythet  | 0.2.25  |
 | Sphinx   | 9.1.1   |
 | docutils | 0.22.4  |
 | Python   | 3.12.16 |
@@ -1422,14 +1422,14 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/nyms/0.0.3/">0.0.3</a>, newer than the documented version (0.0.2).
+Latest release: <a href="https://pypi.org/project/nyms/0.0.4/">0.0.4</a>, newer than the documented version (0.0.3).
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/addaix/nyms && cd nyms
-git checkout 0b877c5a37f7bc543dfcd16c3c634f8bc5847312
-pip install "epythet==0.2.23"
+git checkout 86bc26abb4e7d20a13c6772219897d0228ca5b3c
+pip install "epythet==0.2.25"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
 

@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="_static/documentation_options.js?v=e3a6060d"></script>
+    <script src="_static/documentation_options.js?v=47de8214"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -57,7 +57,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.2" />
+  <meta name="docsearch:version" content="0.0.3" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -438,7 +438,7 @@ nyms<span class="w"> </span>readable<span class="w"> </span><span class="m">0101
 </section>
 <section id="design">
 <h2>Design<a class="headerlink" href="#design" title="Link to this heading">#</a></h2>
-<p>The research behind the design (terminology and regulation, detection libraries and methods, surrogates and key management, pipeline architecture) is in <a class="reference internal" href="#docs/research/"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">docs/research/</span></code></span></a>, with a <a class="reference internal" href="#docs/research/deidentification-synthesis.md"><span class="xref myst">synthesis</span></a>; the decisions are in <a class="reference internal" href="#docs/adr/"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">docs/adr/</span></code></span></a>. Six seams, each one keyword argument of <code class="docutils literal notranslate"><span class="pre">Pseudonymiser</span></code>: <code class="docutils literal notranslate"><span class="pre">detectors</span></code>, <code class="docutils literal notranslate"><span class="pre">post_detectors</span></code>, <code class="docutils literal notranslate"><span class="pre">policy</span></code>, <code class="docutils literal notranslate"><span class="pre">strategy</span></code>, <code class="docutils literal notranslate"><span class="pre">store</span></code>, <code class="docutils literal notranslate"><span class="pre">key</span></code>. The model-based second pass is the <code class="docutils literal notranslate"><span class="pre">post_detectors</span></code> seam: any callable <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">-&gt;</span> <span class="pre">spans</span></code>, run on the already-pseudonymised text with the surrogates protected; none ships in v1.</p>
+<p>The research behind the design (terminology and regulation, detection libraries and methods, surrogates and key management, pipeline architecture) is in <a class="reference external" href="https://github.com/addaix/nyms/tree/HEAD/docs/research"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">docs/research/</span></code></span></a>, with a <a class="reference external" href="https://github.com/addaix/nyms/blob/HEAD/docs/research/deidentification-synthesis.md"><span class="xref myst">synthesis</span></a>; the decisions are in <a class="reference external" href="https://github.com/addaix/nyms/tree/HEAD/docs/adr"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">docs/adr/</span></code></span></a>. Six seams, each one keyword argument of <code class="docutils literal notranslate"><span class="pre">Pseudonymiser</span></code>: <code class="docutils literal notranslate"><span class="pre">detectors</span></code>, <code class="docutils literal notranslate"><span class="pre">post_detectors</span></code>, <code class="docutils literal notranslate"><span class="pre">policy</span></code>, <code class="docutils literal notranslate"><span class="pre">strategy</span></code>, <code class="docutils literal notranslate"><span class="pre">store</span></code>, <code class="docutils literal notranslate"><span class="pre">key</span></code>. The model-based second pass is the <code class="docutils literal notranslate"><span class="pre">post_detectors</span></code> seam: any callable <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">-&gt;</span> <span class="pre">spans</span></code>, run on the already-pseudonymised text with the surrogates protected; none ships in v1.</p>
 <p>The EFF wordlist is CC BY 3.0 (see <code class="docutils literal notranslate"><span class="pre">nyms/data/wordlists/NOTICE.md</span></code>). Everything else is MIT.</p>
 <p class="epythet-aggregates">This documentation as a single file: <a href="nyms.md">nyms.md</a> (Markdown, for agents).</p>
 <div class="toctree-wrapper compound">
@@ -446,7 +446,7 @@ nyms<span class="w"> </span>readable<span class="w"> </span><span class="m">0101
 </section>
 </section>
 
-<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-21 18:16 UTC from <a href="https://github.com/addaix/nyms/commit/0b877c5a37f7bc543dfcd16c3c634f8bc5847312">0b877c5</a> (main) · nyms 0.0.2 · <a href="about-this-build.html">about this build</a></p>
+<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-24 02:04 UTC from <a href="https://github.com/addaix/nyms/commit/86bc26abb4e7d20a13c6772219897d0228ca5b3c">86bc26a</a> (main) · nyms 0.0.3 · <a href="about-this-build.html">about this build</a></p>
 
                 </article>
               
